@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ShellScaffold extends StatelessWidget {
   const ShellScaffold({required this.shell, super.key});
@@ -14,10 +14,10 @@ class ShellScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final items = [
-      (PhosphorIconsLight.sun, l10n.navToday),
-      (PhosphorIconsLight.calendarDots, l10n.navUpcoming),
-      (PhosphorIconsLight.listBullets, l10n.navLists),
-      (PhosphorIconsLight.gearSix, l10n.navSettings),
+      (KlarIcons.sun, l10n.navToday),
+      (KlarIcons.calendarDots, l10n.navUpcoming),
+      (KlarIcons.listBullets, l10n.navLists),
+      (KlarIcons.gearSix, l10n.navSettings),
     ];
     return Scaffold(
       body: shell,

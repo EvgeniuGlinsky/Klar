@@ -5,10 +5,10 @@ import 'package:klar/features/alarms/domain/repos/alarm_engine.dart';
 import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/widgets/klar_row.dart';
 import 'package:klar/ui/widgets/klar_sheet.dart';
 import 'package:klar/ui/widgets/section_header.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 /// What the user chose; `sound == null` means "as in settings".
 class SoundSelection {
@@ -24,13 +24,16 @@ String soundTitle(L10n l10n, SoundRef? sound) => switch (sound?.type) {
   _ => sound!.title,
 };
 
-Future<SoundSelection?> showSoundPicker(BuildContext context, {required SoundRef? current, bool allowDefault = false}) =>
-    showKlarSheet<SoundSelection>(
-      context,
-      title: L10n.of(context).soundPickerTitle,
-      expand: true,
-      builder: (_) => _SoundPicker(current: current, allowDefault: allowDefault),
-    );
+Future<SoundSelection?> showSoundPicker(
+  BuildContext context, {
+  required SoundRef? current,
+  bool allowDefault = false,
+}) => showKlarSheet<SoundSelection>(
+  context,
+  title: L10n.of(context).soundPickerTitle,
+  expand: true,
+  builder: (_) => _SoundPicker(current: current, allowDefault: allowDefault),
+);
 
 class _SoundPicker extends StatefulWidget {
   const _SoundPicker({required this.current, required this.allowDefault});
@@ -88,11 +91,10 @@ class _SoundPickerState extends State<_SoundPicker> {
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (playable && _playing == sound)
-            const Icon(PhosphorIconsLight.waveform, size: 18, color: KlarColors.birch),
+          if (playable && _playing == sound) const Icon(KlarIcons.waveform, size: 18, color: KlarColors.birch),
           const SizedBox(width: 12),
           Icon(
-            selected ? PhosphorIconsFill.checkCircle : PhosphorIconsLight.circle,
+            selected ? KlarIcons.checkCircleFill : KlarIcons.circle,
             size: 22,
             color: selected ? KlarColors.birch : KlarColors.lineStrong,
           ),
@@ -107,20 +109,20 @@ class _SoundPickerState extends State<_SoundPicker> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (widget.allowDefault) _row(l10n.asInSettings, null, icon: PhosphorIconsLight.gearSix),
+        if (widget.allowDefault) _row(l10n.asInSettings, null, icon: KlarIcons.gearSix),
         SectionHeader(l10n.soundSectionKlar),
-        for (final sound in SoundRef.bundled) _row(sound.title, sound, icon: PhosphorIconsLight.musicNote),
+        for (final sound in SoundRef.bundled) _row(sound.title, sound, icon: KlarIcons.musicNote),
         SectionHeader(l10n.soundSectionDevice),
-        _row(l10n.soundSystemDefault, SoundRef.system, icon: PhosphorIconsLight.alarm),
-        if (_custom != null) _row(_custom!.title, _custom, icon: PhosphorIconsLight.fileAudio),
+        _row(l10n.soundSystemDefault, SoundRef.system, icon: KlarIcons.alarm),
+        if (_custom != null) _row(_custom!.title, _custom, icon: KlarIcons.fileAudio),
         KlarRow(
-          icon: PhosphorIconsLight.bellRinging,
+          icon: KlarIcons.bellRinging,
           title: l10n.soundPickSystem,
           onTap: () => _pick(_engine.pickSystemSound),
         ),
-        KlarRow(icon: PhosphorIconsLight.folder, title: l10n.soundPickFile, onTap: () => _pick(_engine.pickAudioFile)),
+        KlarRow(icon: KlarIcons.folder, title: l10n.soundPickFile, onTap: () => _pick(_engine.pickAudioFile)),
         const Divider(height: 24),
-        _row(l10n.soundSilent, SoundRef.silent, icon: PhosphorIconsLight.speakerSlash),
+        _row(l10n.soundSilent, SoundRef.silent, icon: KlarIcons.speakerSlash),
         Padding(
           padding: const EdgeInsets.fromLTRB(KlarDimens.gutter, 20, KlarDimens.gutter, 0),
           child: FilledButton(

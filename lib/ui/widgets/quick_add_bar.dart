@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 /// A pill-shaped input for adding a task with one line; the trailing button opens the full editor.
 class QuickAddBar extends StatefulWidget {
@@ -61,7 +61,7 @@ class _QuickAddBarState extends State<QuickAddBar> {
         child: Row(
           children: [
             const SizedBox(width: 18),
-            const Icon(PhosphorIconsLight.plus, size: 20, color: KlarColors.textMuted),
+            const Icon(KlarIcons.plus, size: 20, color: KlarColors.textMuted),
             const SizedBox(width: 12),
             Expanded(
               child: TextField(
@@ -78,7 +78,7 @@ class _QuickAddBarState extends State<QuickAddBar> {
             IconButton(
               tooltip: l10n.quickAddMore,
               onPressed: _expand,
-              icon: const Icon(PhosphorIconsLight.arrowUpRight, size: 20, color: KlarColors.textMuted),
+              icon: const Icon(KlarIcons.arrowUpRight, size: 20, color: KlarColors.textMuted),
             ),
             const SizedBox(width: 6),
           ],
@@ -104,6 +104,9 @@ class BottomDock extends StatelessWidget {
         stops: [0, 0.35],
       ),
     ),
-    child: Padding(padding: const EdgeInsets.only(top: KlarDimens.gutter), child: child),
+    child: Padding(
+      padding: const EdgeInsets.only(top: KlarDimens.gutter),
+      child: child,
+    ),
   );
 }

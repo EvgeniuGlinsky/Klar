@@ -5,10 +5,10 @@ import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/cubit/overview_cubit.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
 import 'package:klar/ui/widgets/klar_sheet.dart';
 import 'package:klar/ui/widgets/list_icons.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 /// Creates a list, or edits [list]; returns `true` when the list was deleted.
 Future<bool?> showListEditSheet(BuildContext context, {TaskList? list}) {
@@ -17,7 +17,10 @@ Future<bool?> showListEditSheet(BuildContext context, {TaskList? list}) {
   return showKlarSheet<bool>(
     context,
     title: list == null ? l10n.newList : l10n.editList,
-    builder: (_) => BlocProvider.value(value: cubit, child: _ListEditForm(list: list)),
+    builder: (_) => BlocProvider.value(
+      value: cubit,
+      child: _ListEditForm(list: list),
+    ),
   );
 }
 
@@ -134,7 +137,9 @@ class _ListEditFormState extends State<_ListEditForm> {
                       shape: BoxShape.circle,
                       border: Border.all(color: _color == entry.key ? entry.value : Colors.transparent, width: 1.5),
                     ),
-                    child: DecoratedBox(decoration: BoxDecoration(color: entry.value, shape: BoxShape.circle)),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(color: entry.value, shape: BoxShape.circle),
+                    ),
                   ),
                 ),
             ],
@@ -168,7 +173,7 @@ class _ListEditFormState extends State<_ListEditForm> {
             TextButton.icon(
               onPressed: _delete,
               style: TextButton.styleFrom(foregroundColor: KlarColors.lingon),
-              icon: const Icon(PhosphorIconsLight.trash, size: 18),
+              icon: const Icon(KlarIcons.trash, size: 18),
               label: Text(l10n.delete),
             ),
           ],

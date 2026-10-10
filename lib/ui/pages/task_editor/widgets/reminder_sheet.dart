@@ -5,10 +5,10 @@ import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/helpers/formatters.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
 import 'package:klar/ui/widgets/klar_choices.dart';
 import 'package:klar/ui/widgets/klar_sheet.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 typedef ReminderDraft = ({int offsetMinutes, ReminderKind kind});
 
@@ -99,7 +99,7 @@ class _ReminderFormState extends State<_ReminderForm> {
           child: Text(l10n.reminderHow.toUpperCase(), style: KlarTypography.label),
         ),
         _KindOption(
-          icon: PhosphorIconsLight.alarm,
+          icon: KlarIcons.alarm,
           title: l10n.reminderKindAlarm,
           hint: l10n.reminderKindAlarmHint,
           selected: _kind == ReminderKind.alarm,
@@ -107,7 +107,7 @@ class _ReminderFormState extends State<_ReminderForm> {
         ),
         const SizedBox(height: 10),
         _KindOption(
-          icon: PhosphorIconsLight.bell,
+          icon: KlarIcons.bell,
           title: l10n.reminderKindNotification,
           hint: l10n.reminderKindNotificationHint,
           selected: _kind == ReminderKind.notification,

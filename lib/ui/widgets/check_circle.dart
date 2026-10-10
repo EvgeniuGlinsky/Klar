@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 
 /// Round checkbox: an outline tinted with [color] that fills with sage when done.
 class CheckCircle extends StatelessWidget {
-  const CheckCircle({required this.done, required this.onTap, this.color = KlarColors.lineStrong, this.size = 24, super.key});
+  const CheckCircle({
+    required this.done,
+    required this.onTap,
+    this.color = KlarColors.lineStrong,
+    this.size = 24,
+    super.key,
+  });
 
   final bool done;
   final VoidCallback onTap;
@@ -34,7 +40,7 @@ class CheckCircle extends StatelessWidget {
             scale: done ? 1 : 0,
             duration: const Duration(milliseconds: 220),
             curve: Curves.easeOutBack,
-            child: Icon(PhosphorIconsBold.check, size: size * 0.55, color: KlarColors.onAccent),
+            child: Icon(KlarIcons.checkBold, size: size * 0.55, color: KlarColors.onAccent),
           ),
         ),
       ),

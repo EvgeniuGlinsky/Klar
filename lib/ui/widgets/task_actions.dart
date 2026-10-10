@@ -11,7 +11,10 @@ import 'package:klar/ui/helpers/formatters.dart';
 extension TaskActions on BuildContext {
   Future<void> toggleTask(Task task) async {
     final cubit = read<OverviewCubit>();
-    if (task.isCompleted) return cubit.reopen(task);
+    if (task.isCompleted) {
+      await cubit.reopen(task);
+      return;
+    }
 
     final messenger = ScaffoldMessenger.of(this);
     final l10n = L10n.of(this);
@@ -24,7 +27,9 @@ extension TaskActions on BuildContext {
       ..showSnackBar(
         SnackBar(
           content: Text(
-            nextDate == null ? l10n.taskCompleted : l10n.taskNextOccurrence(formatDate(l10n, nextDate, cubit.state.today)),
+            nextDate == null
+                ? l10n.taskCompleted
+                : l10n.taskNextOccurrence(formatDate(l10n, nextDate, cubit.state.today)),
           ),
           action: SnackBarAction(label: l10n.undo, onPressed: () => cubit.restore(previous)),
         ),

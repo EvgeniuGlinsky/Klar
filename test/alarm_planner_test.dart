@@ -49,9 +49,11 @@ void main() {
     expect(result.specs.last.kind, ReminderKind.alarm);
   });
 
-  test('past triggers are dropped', () {
-    final result = plan([task(time: 12 * 60 + 10)]);
-    expect(result.specs.map((s) => s.reminderId), ['r0']);
+  test('past triggers are dropped, except the last few minutes', () {
+    final result = plan([task(time: 12 * 60 + 5)]);
+    expect(result.specs.map((s) => s.trigger.iso), ['2026-10-10T12:05']);
+    final recent = plan([task(time: 12 * 60 + 18)]);
+    expect(recent.specs.map((s) => s.trigger.iso), ['2026-10-10T12:03', '2026-10-10T12:18']);
   });
 
   test('completed tasks, tasks without a date and without reminders plan nothing', () {
@@ -70,14 +72,18 @@ void main() {
   });
 
   test('reminders before midnight move to the previous day', () {
-    final dayBefore = Reminder(id: 'd', offsetMinutes: 1440 + 30, kind: ReminderKind.alarm);
-    final result = plan([task(due: '2026-10-12', time: 0, reminders: [dayBefore])]);
+    const dayBefore = Reminder(id: 'd', offsetMinutes: 1440 + 30, kind: ReminderKind.alarm);
+    final result = plan([
+      task(due: '2026-10-12', time: 0, reminders: [dayBefore]),
+    ]);
     expect(result.specs.single.trigger.iso, '2026-10-10T23:30');
   });
 
   test('recurring tasks ring for every occurrence in the horizon, overdue or not', () {
     final rule = RecurrenceRule(frequency: RecurrenceFrequency.daily, anchor: LocalDate.parse('2026-10-01'));
-    final result = plan([task(due: '2026-10-08', reminders: const [alarmAtTime], recurrence: rule)]);
+    final result = plan([
+      task(due: '2026-10-08', reminders: const [alarmAtTime], recurrence: rule),
+    ]);
     expect(result.specs.first.occurrence.iso, '2026-10-10');
     expect(result.specs.length, 31);
     expect(result.specs.last.occurrence.iso, '2026-11-09');
@@ -87,30 +93,52 @@ void main() {
     final weeklyMonday = RecurrenceRule(
       frequency: RecurrenceFrequency.weekly,
       anchor: LocalDate.parse('2026-10-05'),
-      weekdays: {1},
+      weekdays: const {1},
     );
-    final result = plan([task(due: '2026-10-14', reminders: const [alarmAtTime], recurrence: weeklyMonday)]);
+    final result = plan([
+      task(due: '2026-10-14', reminders: const [alarmAtTime], recurrence: weeklyMonday),
+    ]);
     expect(result.specs.take(3).map((s) => s.occurrence.iso), ['2026-10-14', '2026-10-19', '2026-10-26']);
   });
 
   test('the plan is capped and the horizon shrinks to the last planned trigger', () {
-    final capped = AlarmPlanner(
-      texts: planner.texts,
-      horizonDays: 30,
-      maxSpecs: 5,
-    ).plan(
-      tasks: [
-        task(
-          due: '2026-10-11',
-          reminders: const [alarmAtTime],
-          recurrence: RecurrenceRule(frequency: RecurrenceFrequency.daily, anchor: LocalDate.parse('2026-10-11')),
-        ),
-      ],
-      lists: const [inbox],
-      settings: const AppSettings(),
-      now: now,
-    );
+    final capped =
+        AlarmPlanner(
+          texts: planner.texts,
+          horizonDays: 30,
+          maxSpecs: 5,
+        ).plan(
+          tasks: [
+            task(
+              due: '2026-10-11',
+              reminders: const [alarmAtTime],
+              recurrence: RecurrenceRule(frequency: RecurrenceFrequency.daily, anchor: LocalDate.parse('2026-10-11')),
+            ),
+          ],
+          lists: const [inbox],
+          settings: const AppSettings(),
+          now: now,
+        );
     expect(capped.specs.length, 5);
     expect(capped.horizonEnd.iso, '2026-10-15T18:00');
+  });
+
+  test('upcoming lists timed occurrences after now, soonest first, without reminders too', () {
+    final result = plan([
+      task(id: 'late', time: 20 * 60, reminders: const []),
+      task(id: 'past', time: 11 * 60),
+      task(id: 'allDay', time: null),
+      task(
+        id: 'daily',
+        time: 13 * 60,
+        recurrence: RecurrenceRule(frequency: RecurrenceFrequency.daily, anchor: LocalDate.parse('2026-10-10')),
+      ),
+    ]);
+    expect(result.upcoming.take(3).map((u) => '${u.taskId} ${u.due.iso}'), [
+      'daily 2026-10-10T13:00',
+      'late 2026-10-10T20:00',
+      'daily 2026-10-11T13:00',
+    ]);
+    expect(result.upcoming.where((u) => u.taskId == 'daily').length, 15);
   });
 }

@@ -11,6 +11,7 @@ class EngineConfig {
     required this.rampSeconds,
     required this.snoozeMinutes,
     required this.autoSilenceMinutes,
+    required this.pinNext,
     required this.horizonEnd,
   });
 
@@ -21,6 +22,7 @@ class EngineConfig {
     rampSeconds: settings.rampSeconds,
     snoozeMinutes: settings.snoozeMinutes,
     autoSilenceMinutes: settings.autoSilenceMinutes,
+    pinNext: settings.pinNextTask,
     horizonEnd: horizonEnd,
   );
 
@@ -30,6 +32,9 @@ class EngineConfig {
   final int rampSeconds;
   final int snoozeMinutes;
   final int autoSilenceMinutes;
+
+  /// Keep a notification with the next timed task in the shade.
+  final bool pinNext;
 
   /// When the planned schedule runs out; the engine nudges the user to open the app before that.
   final DateTime horizonEnd;
@@ -41,6 +46,7 @@ class EngineConfig {
     'rampSeconds': rampSeconds,
     'snoozeMinutes': snoozeMinutes,
     'autoSilenceMinutes': autoSilenceMinutes,
+    'pinNext': pinNext,
     'horizonEnd': horizonEnd.millisecondsSinceEpoch,
   };
 }

@@ -18,7 +18,9 @@ class SectionHeader extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(KlarDimens.gutter, 28, KlarDimens.gutter, 8),
       child: Row(
         children: [
-          Expanded(child: Text(title.toUpperCase(), style: KlarTypography.label.copyWith(color: color))),
+          Expanded(
+            child: Text(title.toUpperCase(), style: KlarTypography.label.copyWith(color: color)),
+          ),
           ?trailing,
         ],
       ),

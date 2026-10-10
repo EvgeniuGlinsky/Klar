@@ -7,10 +7,10 @@ import 'package:klar/ui/cubit/overview_cubit.dart';
 import 'package:klar/ui/pages/lists/list_edit_sheet.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
 import 'package:klar/ui/widgets/list_icons.dart';
 import 'package:klar/ui/widgets/page_header.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ListsPage extends StatelessWidget {
   const ListsPage({super.key});
@@ -34,7 +34,7 @@ class ListsPage extends StatelessWidget {
                   trailing: IconButton(
                     tooltip: l10n.newList,
                     onPressed: () => showListEditSheet(context),
-                    icon: const Icon(PhosphorIconsLight.plus, color: KlarColors.text),
+                    icon: const Icon(KlarIcons.plus, color: KlarColors.text),
                   ),
                 ),
               ),
@@ -59,7 +59,7 @@ class ListsPage extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: TextButton.icon(
                       onPressed: () => showListEditSheet(context),
-                      icon: const Icon(PhosphorIconsLight.plus, size: 18),
+                      icon: const Icon(KlarIcons.plus, size: 18),
                       label: Text(l10n.newList),
                     ),
                   ),
@@ -108,7 +108,7 @@ class _ListTile extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(PhosphorIconsLight.caretRight, size: 16, color: KlarColors.textFaint),
+            const Icon(KlarIcons.caretRight, size: 16, color: KlarColors.textFaint),
           ],
         ),
       ),

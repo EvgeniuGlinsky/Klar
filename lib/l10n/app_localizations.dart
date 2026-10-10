@@ -871,29 +871,23 @@ abstract class L10n {
   /// **'Задачи без времени напоминают в'**
   String get settingAllDayTime;
 
-  /// No description provided for @settingFirstWeekday.
-  ///
-  /// In ru, this message translates to:
-  /// **'Неделя начинается'**
-  String get settingFirstWeekday;
-
-  /// No description provided for @weekStartsMonday.
-  ///
-  /// In ru, this message translates to:
-  /// **'С понедельника'**
-  String get weekStartsMonday;
-
-  /// No description provided for @weekStartsSunday.
-  ///
-  /// In ru, this message translates to:
-  /// **'С воскресенья'**
-  String get weekStartsSunday;
-
   /// No description provided for @sectionNotifications.
   ///
   /// In ru, this message translates to:
   /// **'Уведомления'**
   String get sectionNotifications;
+
+  /// No description provided for @settingPinNext.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ближайшая задача в шторке'**
+  String get settingPinNext;
+
+  /// No description provided for @settingPinNextHint.
+  ///
+  /// In ru, this message translates to:
+  /// **'Постоянное уведомление с отсчётом до следующей задачи'**
+  String get settingPinNextHint;
 
   /// No description provided for @settingNotificationSound.
   ///

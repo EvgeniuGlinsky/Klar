@@ -7,13 +7,13 @@ import 'package:klar/ui/cubit/overview_cubit.dart';
 import 'package:klar/ui/helpers/task_sorting.dart';
 import 'package:klar/ui/pages/lists/list_edit_sheet.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/widgets/empty_state.dart';
 import 'package:klar/ui/widgets/page_header.dart';
 import 'package:klar/ui/widgets/quick_add_bar.dart';
 import 'package:klar/ui/widgets/section_header.dart';
 import 'package:klar/ui/widgets/task_actions.dart';
 import 'package:klar/ui/widgets/task_tile.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ListDetailPage extends StatefulWidget {
   const ListDetailPage({required this.listId, super.key});
@@ -57,7 +57,7 @@ class _ListDetailPageState extends State<ListDetailPage> {
           appBar: AppBar(
             leading: IconButton(
               onPressed: () => context.go('/lists'),
-              icon: const Icon(PhosphorIconsLight.caretLeft),
+              icon: const Icon(KlarIcons.caretLeft),
             ),
             actions: [
               IconButton(
@@ -66,7 +66,7 @@ class _ListDetailPageState extends State<ListDetailPage> {
                   final deleted = await showListEditSheet(context, list: list);
                   if ((deleted ?? false) && context.mounted) context.go('/lists');
                 },
-                icon: const Icon(PhosphorIconsLight.dotsThree),
+                icon: const Icon(KlarIcons.dotsThree),
               ),
             ],
           ),
@@ -74,10 +74,14 @@ class _ListDetailPageState extends State<ListDetailPage> {
             children: [
               CustomScrollView(
                 slivers: [
-                  SliverToBoxAdapter(child: PageHeader(title: list.name, accent: KlarColors.list(list.colorKey))),
+                  SliverToBoxAdapter(
+                    child: PageHeader(title: list.name, accent: KlarColors.list(list.colorKey)),
+                  ),
                   const SliverToBoxAdapter(child: SizedBox(height: 12)),
                   if (state.loaded && tasks.isEmpty)
-                    SliverToBoxAdapter(child: EmptyState(title: l10n.emptyListTitle, body: l10n.emptyListBody)),
+                    SliverToBoxAdapter(
+                      child: EmptyState(title: l10n.emptyListTitle, body: l10n.emptyListBody),
+                    ),
                   tiles(active),
                   if (done.isNotEmpty) ...[
                     SliverToBoxAdapter(
@@ -87,7 +91,7 @@ class _ListDetailPageState extends State<ListDetailPage> {
                         trailing: AnimatedRotation(
                           turns: _showDone ? 0.5 : 0,
                           duration: const Duration(milliseconds: 200),
-                          child: const Icon(PhosphorIconsLight.caretDown, size: 16, color: KlarColors.textFaint),
+                          child: const Icon(KlarIcons.caretDown, size: 16, color: KlarColors.textFaint),
                         ),
                       ),
                     ),

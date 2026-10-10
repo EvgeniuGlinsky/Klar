@@ -3,9 +3,9 @@ import 'package:klar/core/time/local_date.dart';
 import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/helpers/formatters.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/widgets/klar_row.dart';
 import 'package:klar/ui/widgets/klar_sheet.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 /// Result of the date sheet: `null` when dismissed, [DateChoice.none] to clear the date.
 class DateChoice {
@@ -19,9 +19,9 @@ class DateChoice {
 Future<DateChoice?> showDateSheet(BuildContext context, {required LocalDate today, LocalDate? current}) async {
   final l10n = L10n.of(context);
   final options = [
-    (l10n.today, today, PhosphorIconsLight.sun),
-    (l10n.tomorrow, today.addDays(1), PhosphorIconsLight.sunHorizon),
-    (l10n.dateNextWeek, today.addDays(7), PhosphorIconsLight.calendarPlus),
+    (l10n.today, today, KlarIcons.sun),
+    (l10n.tomorrow, today.addDays(1), KlarIcons.sunHorizon),
+    (l10n.dateNextWeek, today.addDays(7), KlarIcons.calendarPlus),
   ];
   final choice = await showKlarSheet<Object>(
     context,
@@ -37,13 +37,13 @@ Future<DateChoice?> showDateSheet(BuildContext context, {required LocalDate toda
             onTap: () => Navigator.pop(context, DateChoice(date)),
           ),
         KlarRow(
-          icon: PhosphorIconsLight.calendarBlank,
+          icon: KlarIcons.calendarBlank,
           title: l10n.datePick,
           onTap: () => Navigator.pop(context, 'pick'),
         ),
         if (current != null)
           KlarRow(
-            icon: PhosphorIconsLight.x,
+            icon: KlarIcons.x,
             iconColor: KlarColors.lingon,
             title: l10n.dateClear,
             onTap: () => Navigator.pop(context, DateChoice.none),

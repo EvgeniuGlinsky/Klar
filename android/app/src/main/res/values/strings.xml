@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Klar</string>
+
+    <string name="channel_alarms">Будильники</string>
+    <string name="channel_alarms_description">Задачи, которые звонят на весь экран</string>
+    <string name="channel_reminders">Напоминания</string>
+    <string name="channel_reminders_description">Обычные уведомления о задачах</string>
+    <string name="channel_missed">Пропущенные</string>
+    <string name="channel_next_task">Ближайшая задача</string>
+    <string name="channel_next_task_description">Постоянное уведомление со следующей задачей и отсчётом времени</string>
+    <string name="next_task_label">Далее</string>
+    <string name="next_task_tomorrow">Завтра, %s</string>
+    <string name="next_task_public">Ближайшая задача · %s</string>
+
+    <string name="action_done">Готово</string>
+    <string name="action_snooze">Отложить на %d мин</string>
+    <string name="action_dismiss">Закрыть</string>
+    <string name="snooze_minutes">%d мин</string>
+    <string name="snooze_label">Отложить</string>
+    <string name="ring_more">ещё %d</string>
+
+    <string name="missed_title">Пропущенные напоминания</string>
+    <string name="missed_body">Пропущено · %s</string>
+    <string name="nudge_title">Откройте Klar</string>
+    <string name="nudge_body">Чтобы напоминания продолжали приходить, загляните в приложение.</string>
+
+    <string name="test_alarm_title">Проверка будильника</string>
+    <string name="test_alarm_body">Так Klar напомнит о задаче</string>
+</resources>

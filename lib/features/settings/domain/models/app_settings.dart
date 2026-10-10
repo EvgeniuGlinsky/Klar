@@ -11,7 +11,7 @@ class AppSettings extends Equatable {
     this.snoozeMinutes = 10,
     this.autoSilenceMinutes = 10,
     this.allDayMinutes = 9 * 60,
-    this.firstWeekday = DateTime.monday,
+    this.pinNextTask = true,
     this.onboarded = false,
   });
 
@@ -32,7 +32,9 @@ class AppSettings extends Equatable {
 
   /// Reminder time for tasks that have a date but no time.
   final int allDayMinutes;
-  final int firstWeekday;
+
+  /// Show the next timed task in a persistent notification.
+  final bool pinNextTask;
   final bool onboarded;
 
   AppSettings copyWith({
@@ -43,7 +45,7 @@ class AppSettings extends Equatable {
     int? snoozeMinutes,
     int? autoSilenceMinutes,
     int? allDayMinutes,
-    int? firstWeekday,
+    bool? pinNextTask,
     bool? onboarded,
   }) => AppSettings(
     sound: sound ?? this.sound,
@@ -53,7 +55,7 @@ class AppSettings extends Equatable {
     snoozeMinutes: snoozeMinutes ?? this.snoozeMinutes,
     autoSilenceMinutes: autoSilenceMinutes ?? this.autoSilenceMinutes,
     allDayMinutes: allDayMinutes ?? this.allDayMinutes,
-    firstWeekday: firstWeekday ?? this.firstWeekday,
+    pinNextTask: pinNextTask ?? this.pinNextTask,
     onboarded: onboarded ?? this.onboarded,
   );
 
@@ -66,7 +68,7 @@ class AppSettings extends Equatable {
     snoozeMinutes,
     autoSilenceMinutes,
     allDayMinutes,
-    firstWeekday,
+    pinNextTask,
     onboarded,
   ];
 }

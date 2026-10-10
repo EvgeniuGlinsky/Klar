@@ -6,9 +6,9 @@ import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/helpers/formatters.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/widgets/klar_row.dart';
 import 'package:klar/ui/widgets/klar_sheet.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 /// What the user chose; `pattern == null` means "as in settings".
 class VibrationSelection {
@@ -61,11 +61,11 @@ class _VibrationPickerState extends State<_VibrationPicker> {
     final l10n = L10n.of(context);
     Widget row(String title, VibrationPattern? pattern) => KlarRow(
       title: title,
-      icon: pattern == VibrationPattern.off ? PhosphorIconsLight.prohibit : PhosphorIconsLight.vibrate,
+      icon: pattern == VibrationPattern.off ? KlarIcons.prohibit : KlarIcons.vibrate,
       selected: _selected == pattern,
       onTap: () => _select(pattern),
       trailing: Icon(
-        _selected == pattern ? PhosphorIconsFill.checkCircle : PhosphorIconsLight.circle,
+        _selected == pattern ? KlarIcons.checkCircleFill : KlarIcons.circle,
         size: 22,
         color: _selected == pattern ? KlarColors.birch : KlarColors.lineStrong,
       ),

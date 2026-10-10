@@ -7,12 +7,13 @@ import 'package:klar/features/alarms/domain/models/done_event.dart';
 import 'package:klar/features/alarms/domain/models/engine_config.dart';
 import 'package:klar/features/alarms/domain/models/permission_report.dart';
 import 'package:klar/features/alarms/domain/models/sound_ref.dart';
+import 'package:klar/features/alarms/domain/models/upcoming_task.dart';
 import 'package:klar/features/alarms/domain/models/vibration_pattern.dart';
 import 'package:klar/features/alarms/domain/repos/alarm_engine.dart';
 
 /// [AlarmEngine] backed by `AlarmChannel.kt`.
 class AlarmEngineChannel implements AlarmEngine {
-  AlarmEngineChannel({MethodChannel channel = const MethodChannel('klar/alarms')}) : _channel = channel {
+  AlarmEngineChannel({this._channel = const MethodChannel('klar/alarms')}) {
     _channel.setMethodCallHandler(_onCall);
   }
 
@@ -49,6 +50,7 @@ class AlarmEngineChannel implements AlarmEngine {
   Future<void> replaceAll({
     required EngineConfig config,
     required List<AlarmSpec> specs,
+    required List<UpcomingTask> upcoming,
     required Map<String, String> liveTasks,
     required int ackSeq,
   }) => _channel.invokeMethod<void>('replaceAll', {
@@ -56,6 +58,7 @@ class AlarmEngineChannel implements AlarmEngine {
     'payload': jsonEncode({
       'config': config.toJson(),
       'specs': [for (final s in specs) s.toJson()],
+      'upcoming': [for (final u in upcoming) u.toJson()],
       'live': liveTasks,
       'ackSeq': ackSeq,
     }),

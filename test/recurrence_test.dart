@@ -56,7 +56,7 @@ void main() {
         frequency: RecurrenceFrequency.weekly,
         anchor: d('2026-10-07'), // Wednesday, week of Oct 5
         interval: 2,
-        weekdays: {1, 4},
+        weekdays: const {1, 4},
       );
       expect(isoList(rule.occurrencesBetween(d('2026-10-01'), d('2026-10-31'))), [
         '2026-10-08',
@@ -107,7 +107,7 @@ void main() {
       frequency: RecurrenceFrequency.weekly,
       anchor: d('2026-10-07'),
       interval: 2,
-      weekdays: {4, 1},
+      weekdays: const {4, 1},
       until: d('2027-01-01'),
     );
     expect(RecurrenceRule.fromJson(rule.toJson()), rule);

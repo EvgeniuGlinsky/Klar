@@ -62,7 +62,9 @@ class KlarRow extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 12),
                     child: Text(
                       value!,
-                      style: KlarTypography.bodyMuted.copyWith(color: enabled ? KlarColors.textMuted : KlarColors.textFaint),
+                      style: KlarTypography.bodyMuted.copyWith(
+                        color: enabled ? KlarColors.textMuted : KlarColors.textFaint,
+                      ),
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.end,
                     ),

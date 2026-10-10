@@ -3,8 +3,7 @@
 part of 'klar_db.dart';
 
 // ignore_for_file: type=lint
-class $TaskListsTableTable extends TaskListsTable
-    with TableInfo<$TaskListsTableTable, TaskListRow> {
+class $TaskListsTableTable extends TaskListsTable with TableInfo<$TaskListsTableTable, TaskListRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -283,8 +282,7 @@ class TaskListRow extends DataClass implements Insertable<TaskListRow> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, name, colorKey, iconKey, sortOrder, createdAt);
+  int get hashCode => Object.hash(id, name, colorKey, iconKey, sortOrder, createdAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -409,8 +407,7 @@ class TaskListsTableCompanion extends UpdateCompanion<TaskListRow> {
   }
 }
 
-class $TasksTableTable extends TasksTable
-    with TableInfo<$TasksTableTable, TaskRow> {
+class $TasksTableTable extends TasksTable with TableInfo<$TasksTableTable, TaskRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -456,24 +453,22 @@ class $TasksTableTable extends TasksTable
     defaultValue: const Constant(''),
   );
   @override
-  late final GeneratedColumnWithTypeConverter<Priority, int> priority =
-      GeneratedColumn<int>(
-        'priority',
-        aliasedName,
-        false,
-        type: DriftSqlType.int,
-        requiredDuringInsert: false,
-        defaultValue: const Constant(0),
-      ).withConverter<Priority>($TasksTableTable.$converterpriority);
+  late final GeneratedColumnWithTypeConverter<Priority, int> priority = GeneratedColumn<int>(
+    'priority',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  ).withConverter<Priority>($TasksTableTable.$converterpriority);
   @override
-  late final GeneratedColumnWithTypeConverter<LocalDate?, String> dueDate =
-      GeneratedColumn<String>(
-        'due_date',
-        aliasedName,
-        true,
-        type: DriftSqlType.string,
-        requiredDuringInsert: false,
-      ).withConverter<LocalDate?>($TasksTableTable.$converterdueDaten);
+  late final GeneratedColumnWithTypeConverter<LocalDate?, String> dueDate = GeneratedColumn<String>(
+    'due_date',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  ).withConverter<LocalDate?>($TasksTableTable.$converterdueDaten);
   static const VerificationMeta _dueTimeMeta = const VerificationMeta(
     'dueTime',
   );
@@ -486,8 +481,7 @@ class $TasksTableTable extends TasksTable
     requiredDuringInsert: false,
   );
   @override
-  late final GeneratedColumnWithTypeConverter<RecurrenceRule?, String>
-  recurrence = GeneratedColumn<String>(
+  late final GeneratedColumnWithTypeConverter<RecurrenceRule?, String> recurrence = GeneratedColumn<String>(
     'recurrence',
     aliasedName,
     true,
@@ -529,17 +523,15 @@ class $TasksTableTable extends TasksTable
     defaultValue: const Constant(0),
   );
   @override
-  late final GeneratedColumnWithTypeConverter<SoundRef?, String> sound =
-      GeneratedColumn<String>(
-        'sound',
-        aliasedName,
-        true,
-        type: DriftSqlType.string,
-        requiredDuringInsert: false,
-      ).withConverter<SoundRef?>($TasksTableTable.$convertersoundn);
+  late final GeneratedColumnWithTypeConverter<SoundRef?, String> sound = GeneratedColumn<String>(
+    'sound',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  ).withConverter<SoundRef?>($TasksTableTable.$convertersoundn);
   @override
-  late final GeneratedColumnWithTypeConverter<VibrationPattern?, String>
-  vibration = GeneratedColumn<String>(
+  late final GeneratedColumnWithTypeConverter<VibrationPattern?, String> vibration = GeneratedColumn<String>(
     'vibration',
     aliasedName,
     true,
@@ -709,26 +701,24 @@ class $TasksTableTable extends TasksTable
     return $TasksTableTable(attachedDatabase, alias);
   }
 
-  static JsonTypeConverter2<Priority, int, int> $converterpriority =
-      const EnumIndexConverter<Priority>(Priority.values);
-  static TypeConverter<LocalDate, String> $converterdueDate =
-      const LocalDateConverter();
-  static TypeConverter<LocalDate?, String?> $converterdueDaten =
-      NullAwareTypeConverter.wrap($converterdueDate);
-  static TypeConverter<RecurrenceRule, String> $converterrecurrence =
-      const RecurrenceConverter();
-  static TypeConverter<RecurrenceRule?, String?> $converterrecurrencen =
-      NullAwareTypeConverter.wrap($converterrecurrence);
-  static TypeConverter<SoundRef, String> $convertersound =
-      const SoundRefConverter();
-  static TypeConverter<SoundRef?, String?> $convertersoundn =
-      NullAwareTypeConverter.wrap($convertersound);
-  static JsonTypeConverter2<VibrationPattern, String, String>
-  $convertervibration = const EnumNameConverter<VibrationPattern>(
-    VibrationPattern.values,
+  static JsonTypeConverter2<Priority, int, int> $converterpriority = const EnumIndexConverter<Priority>(
+    Priority.values,
   );
-  static JsonTypeConverter2<VibrationPattern?, String?, String?>
-  $convertervibrationn = JsonTypeConverter2.asNullable($convertervibration);
+  static TypeConverter<LocalDate, String> $converterdueDate = const LocalDateConverter();
+  static TypeConverter<LocalDate?, String?> $converterdueDaten = NullAwareTypeConverter.wrap($converterdueDate);
+  static TypeConverter<RecurrenceRule, String> $converterrecurrence = const RecurrenceConverter();
+  static TypeConverter<RecurrenceRule?, String?> $converterrecurrencen = NullAwareTypeConverter.wrap(
+    $converterrecurrence,
+  );
+  static TypeConverter<SoundRef, String> $convertersound = const SoundRefConverter();
+  static TypeConverter<SoundRef?, String?> $convertersoundn = NullAwareTypeConverter.wrap($convertersound);
+  static JsonTypeConverter2<VibrationPattern, String, String> $convertervibration =
+      const EnumNameConverter<VibrationPattern>(
+        VibrationPattern.values,
+      );
+  static JsonTypeConverter2<VibrationPattern?, String?, String?> $convertervibrationn = JsonTypeConverter2.asNullable(
+    $convertervibration,
+  );
 }
 
 class TaskRow extends DataClass implements Insertable<TaskRow> {
@@ -810,26 +800,14 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
       title: Value(title),
       notes: Value(notes),
       priority: Value(priority),
-      dueDate: dueDate == null && nullToAbsent
-          ? const Value.absent()
-          : Value(dueDate),
-      dueTime: dueTime == null && nullToAbsent
-          ? const Value.absent()
-          : Value(dueTime),
-      recurrence: recurrence == null && nullToAbsent
-          ? const Value.absent()
-          : Value(recurrence),
-      completedAt: completedAt == null && nullToAbsent
-          ? const Value.absent()
-          : Value(completedAt),
+      dueDate: dueDate == null && nullToAbsent ? const Value.absent() : Value(dueDate),
+      dueTime: dueTime == null && nullToAbsent ? const Value.absent() : Value(dueTime),
+      recurrence: recurrence == null && nullToAbsent ? const Value.absent() : Value(recurrence),
+      completedAt: completedAt == null && nullToAbsent ? const Value.absent() : Value(completedAt),
       createdAt: Value(createdAt),
       sortOrder: Value(sortOrder),
-      sound: sound == null && nullToAbsent
-          ? const Value.absent()
-          : Value(sound),
-      vibration: vibration == null && nullToAbsent
-          ? const Value.absent()
-          : Value(vibration),
+      sound: sound == null && nullToAbsent ? const Value.absent() : Value(sound),
+      vibration: vibration == null && nullToAbsent ? const Value.absent() : Value(vibration),
     );
   }
 
@@ -920,12 +898,8 @@ class TaskRow extends DataClass implements Insertable<TaskRow> {
       priority: data.priority.present ? data.priority.value : this.priority,
       dueDate: data.dueDate.present ? data.dueDate.value : this.dueDate,
       dueTime: data.dueTime.present ? data.dueTime.value : this.dueTime,
-      recurrence: data.recurrence.present
-          ? data.recurrence.value
-          : this.recurrence,
-      completedAt: data.completedAt.present
-          ? data.completedAt.value
-          : this.completedAt,
+      recurrence: data.recurrence.present ? data.recurrence.value : this.recurrence,
+      completedAt: data.completedAt.present ? data.completedAt.value : this.completedAt,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
       sound: data.sound.present ? data.sound.value : this.sound,
@@ -1186,8 +1160,7 @@ class TasksTableCompanion extends UpdateCompanion<TaskRow> {
   }
 }
 
-class $SubtasksTableTable extends SubtasksTable
-    with TableInfo<$SubtasksTableTable, SubtaskRow> {
+class $SubtasksTableTable extends SubtasksTable with TableInfo<$SubtasksTableTable, SubtaskRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -1540,8 +1513,7 @@ class SubtasksTableCompanion extends UpdateCompanion<SubtaskRow> {
   }
 }
 
-class $RemindersTableTable extends RemindersTable
-    with TableInfo<$RemindersTableTable, ReminderRow> {
+class $RemindersTableTable extends RemindersTable with TableInfo<$RemindersTableTable, ReminderRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -1579,14 +1551,13 @@ class $RemindersTableTable extends RemindersTable
     requiredDuringInsert: true,
   );
   @override
-  late final GeneratedColumnWithTypeConverter<ReminderKind, String> kind =
-      GeneratedColumn<String>(
-        'kind',
-        aliasedName,
-        false,
-        type: DriftSqlType.string,
-        requiredDuringInsert: true,
-      ).withConverter<ReminderKind>($RemindersTableTable.$converterkind);
+  late final GeneratedColumnWithTypeConverter<ReminderKind, String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  ).withConverter<ReminderKind>($RemindersTableTable.$converterkind);
   static const VerificationMeta _sortOrderMeta = const VerificationMeta(
     'sortOrder',
   );
@@ -1689,8 +1660,9 @@ class $RemindersTableTable extends RemindersTable
     return $RemindersTableTable(attachedDatabase, alias);
   }
 
-  static JsonTypeConverter2<ReminderKind, String, String> $converterkind =
-      const EnumNameConverter<ReminderKind>(ReminderKind.values);
+  static JsonTypeConverter2<ReminderKind, String, String> $converterkind = const EnumNameConverter<ReminderKind>(
+    ReminderKind.values,
+  );
 }
 
 class ReminderRow extends DataClass implements Insertable<ReminderRow> {
@@ -1777,9 +1749,7 @@ class ReminderRow extends DataClass implements Insertable<ReminderRow> {
     return ReminderRow(
       id: data.id.present ? data.id.value : this.id,
       taskId: data.taskId.present ? data.taskId.value : this.taskId,
-      offsetMinutes: data.offsetMinutes.present
-          ? data.offsetMinutes.value
-          : this.offsetMinutes,
+      offsetMinutes: data.offsetMinutes.present ? data.offsetMinutes.value : this.offsetMinutes,
       kind: data.kind.present ? data.kind.value : this.kind,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
     );
@@ -1913,8 +1883,7 @@ class RemindersTableCompanion extends UpdateCompanion<ReminderRow> {
   }
 }
 
-class $CompletionsTableTable extends CompletionsTable
-    with TableInfo<$CompletionsTableTable, CompletionRow> {
+class $CompletionsTableTable extends CompletionsTable with TableInfo<$CompletionsTableTable, CompletionRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -1932,14 +1901,13 @@ class $CompletionsTableTable extends CompletionsTable
     ),
   );
   @override
-  late final GeneratedColumnWithTypeConverter<LocalDate, String> occurrence =
-      GeneratedColumn<String>(
-        'occurrence',
-        aliasedName,
-        false,
-        type: DriftSqlType.string,
-        requiredDuringInsert: true,
-      ).withConverter<LocalDate>($CompletionsTableTable.$converteroccurrence);
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> occurrence = GeneratedColumn<String>(
+    'occurrence',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  ).withConverter<LocalDate>($CompletionsTableTable.$converteroccurrence);
   static const VerificationMeta _completedAtMeta = const VerificationMeta(
     'completedAt',
   );
@@ -2015,8 +1983,7 @@ class $CompletionsTableTable extends CompletionsTable
     return $CompletionsTableTable(attachedDatabase, alias);
   }
 
-  static TypeConverter<LocalDate, String> $converteroccurrence =
-      const LocalDateConverter();
+  static TypeConverter<LocalDate, String> $converteroccurrence = const LocalDateConverter();
 }
 
 class CompletionRow extends DataClass implements Insertable<CompletionRow> {
@@ -2082,12 +2049,8 @@ class CompletionRow extends DataClass implements Insertable<CompletionRow> {
   CompletionRow copyWithCompanion(CompletionsTableCompanion data) {
     return CompletionRow(
       taskId: data.taskId.present ? data.taskId.value : this.taskId,
-      occurrence: data.occurrence.present
-          ? data.occurrence.value
-          : this.occurrence,
-      completedAt: data.completedAt.present
-          ? data.completedAt.value
-          : this.completedAt,
+      occurrence: data.occurrence.present ? data.occurrence.value : this.occurrence,
+      completedAt: data.completedAt.present ? data.completedAt.value : this.completedAt,
     );
   }
 
@@ -2191,8 +2154,7 @@ class CompletionsTableCompanion extends UpdateCompanion<CompletionRow> {
   }
 }
 
-class $SettingsTableTable extends SettingsTable
-    with TableInfo<$SettingsTableTable, SettingsRow> {
+class $SettingsTableTable extends SettingsTable with TableInfo<$SettingsTableTable, SettingsRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -2208,14 +2170,13 @@ class $SettingsTableTable extends SettingsTable
     defaultValue: const Constant(0),
   );
   @override
-  late final GeneratedColumnWithTypeConverter<SoundRef, String> sound =
-      GeneratedColumn<String>(
-        'sound',
-        aliasedName,
-        false,
-        type: DriftSqlType.string,
-        requiredDuringInsert: true,
-      ).withConverter<SoundRef>($SettingsTableTable.$convertersound);
+  late final GeneratedColumnWithTypeConverter<SoundRef, String> sound = GeneratedColumn<String>(
+    'sound',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  ).withConverter<SoundRef>($SettingsTableTable.$convertersound);
   static const VerificationMeta _minVolumeMeta = const VerificationMeta(
     'minVolume',
   );
@@ -2239,8 +2200,7 @@ class $SettingsTableTable extends SettingsTable
     requiredDuringInsert: true,
   );
   @override
-  late final GeneratedColumnWithTypeConverter<VibrationPattern, String>
-  vibration = GeneratedColumn<String>(
+  late final GeneratedColumnWithTypeConverter<VibrationPattern, String> vibration = GeneratedColumn<String>(
     'vibration',
     aliasedName,
     false,
@@ -2258,8 +2218,7 @@ class $SettingsTableTable extends SettingsTable
     type: DriftSqlType.int,
     requiredDuringInsert: true,
   );
-  static const VerificationMeta _autoSilenceMinutesMeta =
-      const VerificationMeta('autoSilenceMinutes');
+  static const VerificationMeta _autoSilenceMinutesMeta = const VerificationMeta('autoSilenceMinutes');
   @override
   late final GeneratedColumn<int> autoSilenceMinutes = GeneratedColumn<int>(
     'auto_silence_minutes',
@@ -2279,16 +2238,20 @@ class $SettingsTableTable extends SettingsTable
     type: DriftSqlType.int,
     requiredDuringInsert: true,
   );
-  static const VerificationMeta _firstWeekdayMeta = const VerificationMeta(
-    'firstWeekday',
+  static const VerificationMeta _pinNextTaskMeta = const VerificationMeta(
+    'pinNextTask',
   );
   @override
-  late final GeneratedColumn<int> firstWeekday = GeneratedColumn<int>(
-    'first_weekday',
+  late final GeneratedColumn<bool> pinNextTask = GeneratedColumn<bool>(
+    'pin_next_task',
     aliasedName,
     false,
-    type: DriftSqlType.int,
-    requiredDuringInsert: true,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("pin_next_task" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
   );
   static const VerificationMeta _onboardedMeta = const VerificationMeta(
     'onboarded',
@@ -2314,7 +2277,7 @@ class $SettingsTableTable extends SettingsTable
     snoozeMinutes,
     autoSilenceMinutes,
     allDayMinutes,
-    firstWeekday,
+    pinNextTask,
     onboarded,
   ];
   @override
@@ -2382,16 +2345,14 @@ class $SettingsTableTable extends SettingsTable
     } else if (isInserting) {
       context.missing(_allDayMinutesMeta);
     }
-    if (data.containsKey('first_weekday')) {
+    if (data.containsKey('pin_next_task')) {
       context.handle(
-        _firstWeekdayMeta,
-        firstWeekday.isAcceptableOrUnknown(
-          data['first_weekday']!,
-          _firstWeekdayMeta,
+        _pinNextTaskMeta,
+        pinNextTask.isAcceptableOrUnknown(
+          data['pin_next_task']!,
+          _pinNextTaskMeta,
         ),
       );
-    } else if (isInserting) {
-      context.missing(_firstWeekdayMeta);
     }
     if (data.containsKey('onboarded')) {
       context.handle(
@@ -2446,9 +2407,9 @@ class $SettingsTableTable extends SettingsTable
         DriftSqlType.int,
         data['${effectivePrefix}all_day_minutes'],
       )!,
-      firstWeekday: attachedDatabase.typeMapping.read(
-        DriftSqlType.int,
-        data['${effectivePrefix}first_weekday'],
+      pinNextTask: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}pin_next_task'],
       )!,
       onboarded: attachedDatabase.typeMapping.read(
         DriftSqlType.bool,
@@ -2462,12 +2423,11 @@ class $SettingsTableTable extends SettingsTable
     return $SettingsTableTable(attachedDatabase, alias);
   }
 
-  static TypeConverter<SoundRef, String> $convertersound =
-      const SoundRefConverter();
-  static JsonTypeConverter2<VibrationPattern, String, String>
-  $convertervibration = const EnumNameConverter<VibrationPattern>(
-    VibrationPattern.values,
-  );
+  static TypeConverter<SoundRef, String> $convertersound = const SoundRefConverter();
+  static JsonTypeConverter2<VibrationPattern, String, String> $convertervibration =
+      const EnumNameConverter<VibrationPattern>(
+        VibrationPattern.values,
+      );
 }
 
 class SettingsRow extends DataClass implements Insertable<SettingsRow> {
@@ -2479,7 +2439,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
   final int snoozeMinutes;
   final int autoSilenceMinutes;
   final int allDayMinutes;
-  final int firstWeekday;
+  final bool pinNextTask;
   final bool onboarded;
   const SettingsRow({
     required this.id,
@@ -2490,7 +2450,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     required this.snoozeMinutes,
     required this.autoSilenceMinutes,
     required this.allDayMinutes,
-    required this.firstWeekday,
+    required this.pinNextTask,
     required this.onboarded,
   });
   @override
@@ -2514,7 +2474,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     map['snooze_minutes'] = Variable<int>(snoozeMinutes);
     map['auto_silence_minutes'] = Variable<int>(autoSilenceMinutes);
     map['all_day_minutes'] = Variable<int>(allDayMinutes);
-    map['first_weekday'] = Variable<int>(firstWeekday);
+    map['pin_next_task'] = Variable<bool>(pinNextTask);
     map['onboarded'] = Variable<bool>(onboarded);
     return map;
   }
@@ -2523,15 +2483,13 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     return SettingsTableCompanion(
       id: Value(id),
       sound: Value(sound),
-      minVolume: minVolume == null && nullToAbsent
-          ? const Value.absent()
-          : Value(minVolume),
+      minVolume: minVolume == null && nullToAbsent ? const Value.absent() : Value(minVolume),
       rampSeconds: Value(rampSeconds),
       vibration: Value(vibration),
       snoozeMinutes: Value(snoozeMinutes),
       autoSilenceMinutes: Value(autoSilenceMinutes),
       allDayMinutes: Value(allDayMinutes),
-      firstWeekday: Value(firstWeekday),
+      pinNextTask: Value(pinNextTask),
       onboarded: Value(onboarded),
     );
   }
@@ -2552,7 +2510,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
       snoozeMinutes: serializer.fromJson<int>(json['snoozeMinutes']),
       autoSilenceMinutes: serializer.fromJson<int>(json['autoSilenceMinutes']),
       allDayMinutes: serializer.fromJson<int>(json['allDayMinutes']),
-      firstWeekday: serializer.fromJson<int>(json['firstWeekday']),
+      pinNextTask: serializer.fromJson<bool>(json['pinNextTask']),
       onboarded: serializer.fromJson<bool>(json['onboarded']),
     );
   }
@@ -2570,7 +2528,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
       'snoozeMinutes': serializer.toJson<int>(snoozeMinutes),
       'autoSilenceMinutes': serializer.toJson<int>(autoSilenceMinutes),
       'allDayMinutes': serializer.toJson<int>(allDayMinutes),
-      'firstWeekday': serializer.toJson<int>(firstWeekday),
+      'pinNextTask': serializer.toJson<bool>(pinNextTask),
       'onboarded': serializer.toJson<bool>(onboarded),
     };
   }
@@ -2584,7 +2542,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     int? snoozeMinutes,
     int? autoSilenceMinutes,
     int? allDayMinutes,
-    int? firstWeekday,
+    bool? pinNextTask,
     bool? onboarded,
   }) => SettingsRow(
     id: id ?? this.id,
@@ -2595,7 +2553,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     snoozeMinutes: snoozeMinutes ?? this.snoozeMinutes,
     autoSilenceMinutes: autoSilenceMinutes ?? this.autoSilenceMinutes,
     allDayMinutes: allDayMinutes ?? this.allDayMinutes,
-    firstWeekday: firstWeekday ?? this.firstWeekday,
+    pinNextTask: pinNextTask ?? this.pinNextTask,
     onboarded: onboarded ?? this.onboarded,
   );
   SettingsRow copyWithCompanion(SettingsTableCompanion data) {
@@ -2603,22 +2561,12 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
       id: data.id.present ? data.id.value : this.id,
       sound: data.sound.present ? data.sound.value : this.sound,
       minVolume: data.minVolume.present ? data.minVolume.value : this.minVolume,
-      rampSeconds: data.rampSeconds.present
-          ? data.rampSeconds.value
-          : this.rampSeconds,
+      rampSeconds: data.rampSeconds.present ? data.rampSeconds.value : this.rampSeconds,
       vibration: data.vibration.present ? data.vibration.value : this.vibration,
-      snoozeMinutes: data.snoozeMinutes.present
-          ? data.snoozeMinutes.value
-          : this.snoozeMinutes,
-      autoSilenceMinutes: data.autoSilenceMinutes.present
-          ? data.autoSilenceMinutes.value
-          : this.autoSilenceMinutes,
-      allDayMinutes: data.allDayMinutes.present
-          ? data.allDayMinutes.value
-          : this.allDayMinutes,
-      firstWeekday: data.firstWeekday.present
-          ? data.firstWeekday.value
-          : this.firstWeekday,
+      snoozeMinutes: data.snoozeMinutes.present ? data.snoozeMinutes.value : this.snoozeMinutes,
+      autoSilenceMinutes: data.autoSilenceMinutes.present ? data.autoSilenceMinutes.value : this.autoSilenceMinutes,
+      allDayMinutes: data.allDayMinutes.present ? data.allDayMinutes.value : this.allDayMinutes,
+      pinNextTask: data.pinNextTask.present ? data.pinNextTask.value : this.pinNextTask,
       onboarded: data.onboarded.present ? data.onboarded.value : this.onboarded,
     );
   }
@@ -2634,7 +2582,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
           ..write('snoozeMinutes: $snoozeMinutes, ')
           ..write('autoSilenceMinutes: $autoSilenceMinutes, ')
           ..write('allDayMinutes: $allDayMinutes, ')
-          ..write('firstWeekday: $firstWeekday, ')
+          ..write('pinNextTask: $pinNextTask, ')
           ..write('onboarded: $onboarded')
           ..write(')'))
         .toString();
@@ -2650,7 +2598,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
     snoozeMinutes,
     autoSilenceMinutes,
     allDayMinutes,
-    firstWeekday,
+    pinNextTask,
     onboarded,
   );
   @override
@@ -2665,7 +2613,7 @@ class SettingsRow extends DataClass implements Insertable<SettingsRow> {
           other.snoozeMinutes == this.snoozeMinutes &&
           other.autoSilenceMinutes == this.autoSilenceMinutes &&
           other.allDayMinutes == this.allDayMinutes &&
-          other.firstWeekday == this.firstWeekday &&
+          other.pinNextTask == this.pinNextTask &&
           other.onboarded == this.onboarded);
 }
 
@@ -2678,7 +2626,7 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
   final Value<int> snoozeMinutes;
   final Value<int> autoSilenceMinutes;
   final Value<int> allDayMinutes;
-  final Value<int> firstWeekday;
+  final Value<bool> pinNextTask;
   final Value<bool> onboarded;
   const SettingsTableCompanion({
     this.id = const Value.absent(),
@@ -2689,7 +2637,7 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
     this.snoozeMinutes = const Value.absent(),
     this.autoSilenceMinutes = const Value.absent(),
     this.allDayMinutes = const Value.absent(),
-    this.firstWeekday = const Value.absent(),
+    this.pinNextTask = const Value.absent(),
     this.onboarded = const Value.absent(),
   });
   SettingsTableCompanion.insert({
@@ -2701,7 +2649,7 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
     required int snoozeMinutes,
     required int autoSilenceMinutes,
     required int allDayMinutes,
-    required int firstWeekday,
+    this.pinNextTask = const Value.absent(),
     required bool onboarded,
   }) : sound = Value(sound),
        rampSeconds = Value(rampSeconds),
@@ -2709,7 +2657,6 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
        snoozeMinutes = Value(snoozeMinutes),
        autoSilenceMinutes = Value(autoSilenceMinutes),
        allDayMinutes = Value(allDayMinutes),
-       firstWeekday = Value(firstWeekday),
        onboarded = Value(onboarded);
   static Insertable<SettingsRow> custom({
     Expression<int>? id,
@@ -2720,7 +2667,7 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
     Expression<int>? snoozeMinutes,
     Expression<int>? autoSilenceMinutes,
     Expression<int>? allDayMinutes,
-    Expression<int>? firstWeekday,
+    Expression<bool>? pinNextTask,
     Expression<bool>? onboarded,
   }) {
     return RawValuesInsertable({
@@ -2730,10 +2677,9 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
       if (rampSeconds != null) 'ramp_seconds': rampSeconds,
       if (vibration != null) 'vibration': vibration,
       if (snoozeMinutes != null) 'snooze_minutes': snoozeMinutes,
-      if (autoSilenceMinutes != null)
-        'auto_silence_minutes': autoSilenceMinutes,
+      if (autoSilenceMinutes != null) 'auto_silence_minutes': autoSilenceMinutes,
       if (allDayMinutes != null) 'all_day_minutes': allDayMinutes,
-      if (firstWeekday != null) 'first_weekday': firstWeekday,
+      if (pinNextTask != null) 'pin_next_task': pinNextTask,
       if (onboarded != null) 'onboarded': onboarded,
     });
   }
@@ -2747,7 +2693,7 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
     Value<int>? snoozeMinutes,
     Value<int>? autoSilenceMinutes,
     Value<int>? allDayMinutes,
-    Value<int>? firstWeekday,
+    Value<bool>? pinNextTask,
     Value<bool>? onboarded,
   }) {
     return SettingsTableCompanion(
@@ -2759,7 +2705,7 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
       snoozeMinutes: snoozeMinutes ?? this.snoozeMinutes,
       autoSilenceMinutes: autoSilenceMinutes ?? this.autoSilenceMinutes,
       allDayMinutes: allDayMinutes ?? this.allDayMinutes,
-      firstWeekday: firstWeekday ?? this.firstWeekday,
+      pinNextTask: pinNextTask ?? this.pinNextTask,
       onboarded: onboarded ?? this.onboarded,
     );
   }
@@ -2795,8 +2741,8 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
     if (allDayMinutes.present) {
       map['all_day_minutes'] = Variable<int>(allDayMinutes.value);
     }
-    if (firstWeekday.present) {
-      map['first_weekday'] = Variable<int>(firstWeekday.value);
+    if (pinNextTask.present) {
+      map['pin_next_task'] = Variable<bool>(pinNextTask.value);
     }
     if (onboarded.present) {
       map['onboarded'] = Variable<bool>(onboarded.value);
@@ -2815,7 +2761,7 @@ class SettingsTableCompanion extends UpdateCompanion<SettingsRow> {
           ..write('snoozeMinutes: $snoozeMinutes, ')
           ..write('autoSilenceMinutes: $autoSilenceMinutes, ')
           ..write('allDayMinutes: $allDayMinutes, ')
-          ..write('firstWeekday: $firstWeekday, ')
+          ..write('pinNextTask: $pinNextTask, ')
           ..write('onboarded: $onboarded')
           ..write(')'))
         .toString();
@@ -2834,8 +2780,7 @@ abstract class _$KlarDb extends GeneratedDatabase {
   );
   late final $SettingsTableTable settingsTable = $SettingsTableTable(this);
   @override
-  Iterable<TableInfo<Table, Object?>> get allTables =>
-      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
+  Iterable<TableInfo<Table, Object?>> get allTables => allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
     taskListsTable,
@@ -2878,40 +2823,37 @@ abstract class _$KlarDb extends GeneratedDatabase {
   ]);
 }
 
-typedef $$TaskListsTableTableCreateCompanionBuilder =
-    TaskListsTableCompanion Function({
-      required String id,
-      required String name,
-      required String colorKey,
-      required String iconKey,
-      Value<int> sortOrder,
-      required DateTime createdAt,
-      Value<int> rowid,
-    });
-typedef $$TaskListsTableTableUpdateCompanionBuilder =
-    TaskListsTableCompanion Function({
-      Value<String> id,
-      Value<String> name,
-      Value<String> colorKey,
-      Value<String> iconKey,
-      Value<int> sortOrder,
-      Value<DateTime> createdAt,
-      Value<int> rowid,
-    });
+typedef $$TaskListsTableTableCreateCompanionBuilder = TaskListsTableCompanion Function({
+  required String id,
+  required String name,
+  required String colorKey,
+  required String iconKey,
+  Value<int> sortOrder,
+  required DateTime createdAt,
+  Value<int> rowid,
+});
+typedef $$TaskListsTableTableUpdateCompanionBuilder = TaskListsTableCompanion Function({
+  Value<String> id,
+  Value<String> name,
+  Value<String> colorKey,
+  Value<String> iconKey,
+  Value<int> sortOrder,
+  Value<DateTime> createdAt,
+  Value<int> rowid,
+});
 
-final class $$TaskListsTableTableReferences
-    extends BaseReferences<_$KlarDb, $TaskListsTableTable, TaskListRow> {
+final class $$TaskListsTableTableReferences extends BaseReferences<_$KlarDb, $TaskListsTableTable, TaskListRow> {
   $$TaskListsTableTableReferences(
     super.$_db,
     super.$_table,
     super.$_typedResult,
   );
 
-  static MultiTypedResultKey<$TasksTableTable, List<TaskRow>>
-  _tasksTableRefsTable(_$KlarDb db) => MultiTypedResultKey.fromTable(
-    db.tasksTable,
-    aliasName: 'task_lists__id__tasks__list_id',
-  );
+  static MultiTypedResultKey<$TasksTableTable, List<TaskRow>> _tasksTableRefsTable(_$KlarDb db) =>
+      MultiTypedResultKey.fromTable(
+        db.tasksTable,
+        aliasName: 'task_lists__id__tasks__list_id',
+      );
 
   $$TasksTableTableProcessedTableManager get tasksTableRefs {
     final manager = $$TasksTableTableTableManager(
@@ -2926,8 +2868,7 @@ final class $$TaskListsTableTableReferences
   }
 }
 
-class $$TaskListsTableTableFilterComposer
-    extends Composer<_$KlarDb, $TaskListsTableTable> {
+class $$TaskListsTableTableFilterComposer extends Composer<_$KlarDb, $TaskListsTableTable> {
   $$TaskListsTableTableFilterComposer({
     required super.$db,
     required super.$table,
@@ -2983,16 +2924,14 @@ class $$TaskListsTableTableFilterComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
   }
 }
 
-class $$TaskListsTableTableOrderingComposer
-    extends Composer<_$KlarDb, $TaskListsTableTable> {
+class $$TaskListsTableTableOrderingComposer extends Composer<_$KlarDb, $TaskListsTableTable> {
   $$TaskListsTableTableOrderingComposer({
     required super.$db,
     required super.$table,
@@ -3031,8 +2970,7 @@ class $$TaskListsTableTableOrderingComposer
   );
 }
 
-class $$TaskListsTableTableAnnotationComposer
-    extends Composer<_$KlarDb, $TaskListsTableTable> {
+class $$TaskListsTableTableAnnotationComposer extends Composer<_$KlarDb, $TaskListsTableTable> {
   $$TaskListsTableTableAnnotationComposer({
     required super.$db,
     required super.$table,
@@ -3040,23 +2978,17 @@ class $$TaskListsTableTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  GeneratedColumn<String> get id =>
-      $composableBuilder(column: $table.id, builder: (column) => column);
+  GeneratedColumn<String> get id => $composableBuilder(column: $table.id, builder: (column) => column);
 
-  GeneratedColumn<String> get name =>
-      $composableBuilder(column: $table.name, builder: (column) => column);
+  GeneratedColumn<String> get name => $composableBuilder(column: $table.name, builder: (column) => column);
 
-  GeneratedColumn<String> get colorKey =>
-      $composableBuilder(column: $table.colorKey, builder: (column) => column);
+  GeneratedColumn<String> get colorKey => $composableBuilder(column: $table.colorKey, builder: (column) => column);
 
-  GeneratedColumn<String> get iconKey =>
-      $composableBuilder(column: $table.iconKey, builder: (column) => column);
+  GeneratedColumn<String> get iconKey => $composableBuilder(column: $table.iconKey, builder: (column) => column);
 
-  GeneratedColumn<int> get sortOrder =>
-      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+  GeneratedColumn<int> get sortOrder => $composableBuilder(column: $table.sortOrder, builder: (column) => column);
 
-  GeneratedColumn<DateTime> get createdAt =>
-      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+  GeneratedColumn<DateTime> get createdAt => $composableBuilder(column: $table.createdAt, builder: (column) => column);
 
   Expression<T> tasksTableRefs<T extends Object>(
     Expression<T> Function($$TasksTableTableAnnotationComposer a) f,
@@ -3076,8 +3008,7 @@ class $$TaskListsTableTableAnnotationComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
@@ -3104,12 +3035,9 @@ class $$TaskListsTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$TaskListsTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$TaskListsTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$TaskListsTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () => $$TaskListsTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () => $$TaskListsTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () => $$TaskListsTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -3162,20 +3090,14 @@ class $$TaskListsTableTableTableManager
               getPrefetchedDataCallback: (items) async {
                 return [
                   if (tasksTableRefs)
-                    await $_getPrefetchedData<
-                      TaskListRow,
-                      $TaskListsTableTable,
-                      TaskRow
-                    >(
+                    await $_getPrefetchedData<TaskListRow, $TaskListsTableTable, TaskRow>(
                       currentTable: table,
-                      referencedTable: $$TaskListsTableTableReferences
-                          ._tasksTableRefsTable(db),
-                      managerFromTypedResult: (p0) =>
-                          $$TaskListsTableTableReferences(
-                            db,
-                            table,
-                            p0,
-                          ).tasksTableRefs,
+                      referencedTable: $$TaskListsTableTableReferences._tasksTableRefsTable(db),
+                      managerFromTypedResult: (p0) => $$TaskListsTableTableReferences(
+                        db,
+                        table,
+                        p0,
+                      ).tasksTableRefs,
                       referencedItemsForCurrentItem: (item, referencedItems) =>
                           referencedItems.where((e) => e.listId == item.id),
                       typedResults: items,
@@ -3235,8 +3157,7 @@ typedef $$TasksTableTableUpdateCompanionBuilder = TasksTableCompanion Function({
   Value<int> rowid,
 });
 
-final class $$TasksTableTableReferences
-    extends BaseReferences<_$KlarDb, $TasksTableTable, TaskRow> {
+final class $$TasksTableTableReferences extends BaseReferences<_$KlarDb, $TasksTableTable, TaskRow> {
   $$TasksTableTableReferences(super.$_db, super.$_table, super.$_typedResult);
 
   static $TaskListsTableTable _listIdTable(_$KlarDb db) =>
@@ -3256,11 +3177,11 @@ final class $$TasksTableTableReferences
     );
   }
 
-  static MultiTypedResultKey<$SubtasksTableTable, List<SubtaskRow>>
-  _subtasksTableRefsTable(_$KlarDb db) => MultiTypedResultKey.fromTable(
-    db.subtasksTable,
-    aliasName: 'tasks__id__subtasks__task_id',
-  );
+  static MultiTypedResultKey<$SubtasksTableTable, List<SubtaskRow>> _subtasksTableRefsTable(_$KlarDb db) =>
+      MultiTypedResultKey.fromTable(
+        db.subtasksTable,
+        aliasName: 'tasks__id__subtasks__task_id',
+      );
 
   $$SubtasksTableTableProcessedTableManager get subtasksTableRefs {
     final manager = $$SubtasksTableTableTableManager(
@@ -3274,11 +3195,11 @@ final class $$TasksTableTableReferences
     );
   }
 
-  static MultiTypedResultKey<$RemindersTableTable, List<ReminderRow>>
-  _remindersTableRefsTable(_$KlarDb db) => MultiTypedResultKey.fromTable(
-    db.remindersTable,
-    aliasName: 'tasks__id__reminders__task_id',
-  );
+  static MultiTypedResultKey<$RemindersTableTable, List<ReminderRow>> _remindersTableRefsTable(_$KlarDb db) =>
+      MultiTypedResultKey.fromTable(
+        db.remindersTable,
+        aliasName: 'tasks__id__reminders__task_id',
+      );
 
   $$RemindersTableTableProcessedTableManager get remindersTableRefs {
     final manager = $$RemindersTableTableTableManager(
@@ -3292,11 +3213,11 @@ final class $$TasksTableTableReferences
     );
   }
 
-  static MultiTypedResultKey<$CompletionsTableTable, List<CompletionRow>>
-  _completionsTableRefsTable(_$KlarDb db) => MultiTypedResultKey.fromTable(
-    db.completionsTable,
-    aliasName: 'tasks__id__completions__task_id',
-  );
+  static MultiTypedResultKey<$CompletionsTableTable, List<CompletionRow>> _completionsTableRefsTable(_$KlarDb db) =>
+      MultiTypedResultKey.fromTable(
+        db.completionsTable,
+        aliasName: 'tasks__id__completions__task_id',
+      );
 
   $$CompletionsTableTableProcessedTableManager get completionsTableRefs {
     final manager = $$CompletionsTableTableTableManager(
@@ -3313,8 +3234,7 @@ final class $$TasksTableTableReferences
   }
 }
 
-class $$TasksTableTableFilterComposer
-    extends Composer<_$KlarDb, $TasksTableTable> {
+class $$TasksTableTableFilterComposer extends Composer<_$KlarDb, $TasksTableTable> {
   $$TasksTableTableFilterComposer({
     required super.$db,
     required super.$table,
@@ -3337,25 +3257,22 @@ class $$TasksTableTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnWithTypeConverterFilters<Priority, Priority, int> get priority =>
-      $composableBuilder(
-        column: $table.priority,
-        builder: (column) => ColumnWithTypeConverterFilters(column),
-      );
+  ColumnWithTypeConverterFilters<Priority, Priority, int> get priority => $composableBuilder(
+    column: $table.priority,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
 
-  ColumnWithTypeConverterFilters<LocalDate?, LocalDate, String> get dueDate =>
-      $composableBuilder(
-        column: $table.dueDate,
-        builder: (column) => ColumnWithTypeConverterFilters(column),
-      );
+  ColumnWithTypeConverterFilters<LocalDate?, LocalDate, String> get dueDate => $composableBuilder(
+    column: $table.dueDate,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
 
   ColumnFilters<int> get dueTime => $composableBuilder(
     column: $table.dueTime,
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnWithTypeConverterFilters<RecurrenceRule?, RecurrenceRule, String>
-  get recurrence => $composableBuilder(
+  ColumnWithTypeConverterFilters<RecurrenceRule?, RecurrenceRule, String> get recurrence => $composableBuilder(
     column: $table.recurrence,
     builder: (column) => ColumnWithTypeConverterFilters(column),
   );
@@ -3375,14 +3292,12 @@ class $$TasksTableTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnWithTypeConverterFilters<SoundRef?, SoundRef, String> get sound =>
-      $composableBuilder(
-        column: $table.sound,
-        builder: (column) => ColumnWithTypeConverterFilters(column),
-      );
+  ColumnWithTypeConverterFilters<SoundRef?, SoundRef, String> get sound => $composableBuilder(
+    column: $table.sound,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
 
-  ColumnWithTypeConverterFilters<VibrationPattern?, VibrationPattern, String>
-  get vibration => $composableBuilder(
+  ColumnWithTypeConverterFilters<VibrationPattern?, VibrationPattern, String> get vibration => $composableBuilder(
     column: $table.vibration,
     builder: (column) => ColumnWithTypeConverterFilters(column),
   );
@@ -3403,8 +3318,7 @@ class $$TasksTableTableFilterComposer
             $table: $db.taskListsTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
@@ -3428,8 +3342,7 @@ class $$TasksTableTableFilterComposer
             $table: $db.subtasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
@@ -3453,8 +3366,7 @@ class $$TasksTableTableFilterComposer
             $table: $db.remindersTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
@@ -3478,16 +3390,14 @@ class $$TasksTableTableFilterComposer
             $table: $db.completionsTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
   }
 }
 
-class $$TasksTableTableOrderingComposer
-    extends Composer<_$KlarDb, $TasksTableTable> {
+class $$TasksTableTableOrderingComposer extends Composer<_$KlarDb, $TasksTableTable> {
   $$TasksTableTableOrderingComposer({
     required super.$db,
     required super.$table,
@@ -3571,16 +3481,14 @@ class $$TasksTableTableOrderingComposer
             $table: $db.taskListsTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
   }
 }
 
-class $$TasksTableTableAnnotationComposer
-    extends Composer<_$KlarDb, $TasksTableTable> {
+class $$TasksTableTableAnnotationComposer extends Composer<_$KlarDb, $TasksTableTable> {
   $$TasksTableTableAnnotationComposer({
     required super.$db,
     required super.$table,
@@ -3588,14 +3496,11 @@ class $$TasksTableTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  GeneratedColumn<String> get id =>
-      $composableBuilder(column: $table.id, builder: (column) => column);
+  GeneratedColumn<String> get id => $composableBuilder(column: $table.id, builder: (column) => column);
 
-  GeneratedColumn<String> get title =>
-      $composableBuilder(column: $table.title, builder: (column) => column);
+  GeneratedColumn<String> get title => $composableBuilder(column: $table.title, builder: (column) => column);
 
-  GeneratedColumn<String> get notes =>
-      $composableBuilder(column: $table.notes, builder: (column) => column);
+  GeneratedColumn<String> get notes => $composableBuilder(column: $table.notes, builder: (column) => column);
 
   GeneratedColumnWithTypeConverter<Priority, int> get priority =>
       $composableBuilder(column: $table.priority, builder: (column) => column);
@@ -3603,25 +3508,21 @@ class $$TasksTableTableAnnotationComposer
   GeneratedColumnWithTypeConverter<LocalDate?, String> get dueDate =>
       $composableBuilder(column: $table.dueDate, builder: (column) => column);
 
-  GeneratedColumn<int> get dueTime =>
-      $composableBuilder(column: $table.dueTime, builder: (column) => column);
+  GeneratedColumn<int> get dueTime => $composableBuilder(column: $table.dueTime, builder: (column) => column);
 
-  GeneratedColumnWithTypeConverter<RecurrenceRule?, String> get recurrence =>
-      $composableBuilder(
-        column: $table.recurrence,
-        builder: (column) => column,
-      );
+  GeneratedColumnWithTypeConverter<RecurrenceRule?, String> get recurrence => $composableBuilder(
+    column: $table.recurrence,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get completedAt => $composableBuilder(
     column: $table.completedAt,
     builder: (column) => column,
   );
 
-  GeneratedColumn<DateTime> get createdAt =>
-      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+  GeneratedColumn<DateTime> get createdAt => $composableBuilder(column: $table.createdAt, builder: (column) => column);
 
-  GeneratedColumn<int> get sortOrder =>
-      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+  GeneratedColumn<int> get sortOrder => $composableBuilder(column: $table.sortOrder, builder: (column) => column);
 
   GeneratedColumnWithTypeConverter<SoundRef?, String> get sound =>
       $composableBuilder(column: $table.sound, builder: (column) => column);
@@ -3645,8 +3546,7 @@ class $$TasksTableTableAnnotationComposer
             $table: $db.taskListsTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
@@ -3670,8 +3570,7 @@ class $$TasksTableTableAnnotationComposer
             $table: $db.subtasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
@@ -3695,8 +3594,7 @@ class $$TasksTableTableAnnotationComposer
             $table: $db.remindersTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
@@ -3720,8 +3618,7 @@ class $$TasksTableTableAnnotationComposer
             $table: $db.completionsTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return f(composer);
@@ -3753,12 +3650,9 @@ class $$TasksTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$TasksTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$TasksTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$TasksTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () => $$TasksTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () => $$TasksTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () => $$TasksTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -3865,11 +3759,8 @@ class $$TasksTableTableTableManager
                           state = state.withJoin(
                             currentTable: table,
                             currentColumn: table.listId,
-                            referencedTable: $$TasksTableTableReferences
-                                ._listIdTable(db),
-                            referencedColumn: $$TasksTableTableReferences
-                                ._listIdTable(db)
-                                .id,
+                            referencedTable: $$TasksTableTableReferences._listIdTable(db),
+                            referencedColumn: $$TasksTableTableReferences._listIdTable(db).id,
                           ) as T;
                         }
 
@@ -3878,66 +3769,45 @@ class $$TasksTableTableTableManager
                   getPrefetchedDataCallback: (items) async {
                     return [
                       if (subtasksTableRefs)
-                        await $_getPrefetchedData<
-                          TaskRow,
-                          $TasksTableTable,
-                          SubtaskRow
-                        >(
+                        await $_getPrefetchedData<TaskRow, $TasksTableTable, SubtaskRow>(
                           currentTable: table,
-                          referencedTable: $$TasksTableTableReferences
-                              ._subtasksTableRefsTable(db),
-                          managerFromTypedResult: (p0) =>
-                              $$TasksTableTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).subtasksTableRefs,
-                          referencedItemsForCurrentItem:
-                              (item, referencedItems) => referencedItems.where(
-                                (e) => e.taskId == item.id,
-                              ),
+                          referencedTable: $$TasksTableTableReferences._subtasksTableRefsTable(db),
+                          managerFromTypedResult: (p0) => $$TasksTableTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).subtasksTableRefs,
+                          referencedItemsForCurrentItem: (item, referencedItems) => referencedItems.where(
+                            (e) => e.taskId == item.id,
+                          ),
                           typedResults: items,
                         ),
                       if (remindersTableRefs)
-                        await $_getPrefetchedData<
-                          TaskRow,
-                          $TasksTableTable,
-                          ReminderRow
-                        >(
+                        await $_getPrefetchedData<TaskRow, $TasksTableTable, ReminderRow>(
                           currentTable: table,
-                          referencedTable: $$TasksTableTableReferences
-                              ._remindersTableRefsTable(db),
-                          managerFromTypedResult: (p0) =>
-                              $$TasksTableTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).remindersTableRefs,
-                          referencedItemsForCurrentItem:
-                              (item, referencedItems) => referencedItems.where(
-                                (e) => e.taskId == item.id,
-                              ),
+                          referencedTable: $$TasksTableTableReferences._remindersTableRefsTable(db),
+                          managerFromTypedResult: (p0) => $$TasksTableTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).remindersTableRefs,
+                          referencedItemsForCurrentItem: (item, referencedItems) => referencedItems.where(
+                            (e) => e.taskId == item.id,
+                          ),
                           typedResults: items,
                         ),
                       if (completionsTableRefs)
-                        await $_getPrefetchedData<
-                          TaskRow,
-                          $TasksTableTable,
-                          CompletionRow
-                        >(
+                        await $_getPrefetchedData<TaskRow, $TasksTableTable, CompletionRow>(
                           currentTable: table,
-                          referencedTable: $$TasksTableTableReferences
-                              ._completionsTableRefsTable(db),
-                          managerFromTypedResult: (p0) =>
-                              $$TasksTableTableReferences(
-                                db,
-                                table,
-                                p0,
-                              ).completionsTableRefs,
-                          referencedItemsForCurrentItem:
-                              (item, referencedItems) => referencedItems.where(
-                                (e) => e.taskId == item.id,
-                              ),
+                          referencedTable: $$TasksTableTableReferences._completionsTableRefsTable(db),
+                          managerFromTypedResult: (p0) => $$TasksTableTableReferences(
+                            db,
+                            table,
+                            p0,
+                          ).completionsTableRefs,
+                          referencedItemsForCurrentItem: (item, referencedItems) => referencedItems.where(
+                            (e) => e.taskId == item.id,
+                          ),
                           typedResults: items,
                         ),
                     ];
@@ -3967,35 +3837,31 @@ typedef $$TasksTableTableProcessedTableManager =
         bool completionsTableRefs,
       })
     >;
-typedef $$SubtasksTableTableCreateCompanionBuilder =
-    SubtasksTableCompanion Function({
-      required String id,
-      required String taskId,
-      required String title,
-      Value<bool> done,
-      required int sortOrder,
-      Value<int> rowid,
-    });
-typedef $$SubtasksTableTableUpdateCompanionBuilder =
-    SubtasksTableCompanion Function({
-      Value<String> id,
-      Value<String> taskId,
-      Value<String> title,
-      Value<bool> done,
-      Value<int> sortOrder,
-      Value<int> rowid,
-    });
+typedef $$SubtasksTableTableCreateCompanionBuilder = SubtasksTableCompanion Function({
+  required String id,
+  required String taskId,
+  required String title,
+  Value<bool> done,
+  required int sortOrder,
+  Value<int> rowid,
+});
+typedef $$SubtasksTableTableUpdateCompanionBuilder = SubtasksTableCompanion Function({
+  Value<String> id,
+  Value<String> taskId,
+  Value<String> title,
+  Value<bool> done,
+  Value<int> sortOrder,
+  Value<int> rowid,
+});
 
-final class $$SubtasksTableTableReferences
-    extends BaseReferences<_$KlarDb, $SubtasksTableTable, SubtaskRow> {
+final class $$SubtasksTableTableReferences extends BaseReferences<_$KlarDb, $SubtasksTableTable, SubtaskRow> {
   $$SubtasksTableTableReferences(
     super.$_db,
     super.$_table,
     super.$_typedResult,
   );
 
-  static $TasksTableTable _taskIdTable(_$KlarDb db) =>
-      db.tasksTable.createAlias('subtasks__task_id__tasks__id');
+  static $TasksTableTable _taskIdTable(_$KlarDb db) => db.tasksTable.createAlias('subtasks__task_id__tasks__id');
 
   $$TasksTableTableProcessedTableManager get taskId {
     final $_column = $_itemColumn<String>('task_id')!;
@@ -4012,8 +3878,7 @@ final class $$SubtasksTableTableReferences
   }
 }
 
-class $$SubtasksTableTableFilterComposer
-    extends Composer<_$KlarDb, $SubtasksTableTable> {
+class $$SubtasksTableTableFilterComposer extends Composer<_$KlarDb, $SubtasksTableTable> {
   $$SubtasksTableTableFilterComposer({
     required super.$db,
     required super.$table,
@@ -4057,16 +3922,14 @@ class $$SubtasksTableTableFilterComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
   }
 }
 
-class $$SubtasksTableTableOrderingComposer
-    extends Composer<_$KlarDb, $SubtasksTableTable> {
+class $$SubtasksTableTableOrderingComposer extends Composer<_$KlarDb, $SubtasksTableTable> {
   $$SubtasksTableTableOrderingComposer({
     required super.$db,
     required super.$table,
@@ -4110,16 +3973,14 @@ class $$SubtasksTableTableOrderingComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
   }
 }
 
-class $$SubtasksTableTableAnnotationComposer
-    extends Composer<_$KlarDb, $SubtasksTableTable> {
+class $$SubtasksTableTableAnnotationComposer extends Composer<_$KlarDb, $SubtasksTableTable> {
   $$SubtasksTableTableAnnotationComposer({
     required super.$db,
     required super.$table,
@@ -4127,17 +3988,13 @@ class $$SubtasksTableTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  GeneratedColumn<String> get id =>
-      $composableBuilder(column: $table.id, builder: (column) => column);
+  GeneratedColumn<String> get id => $composableBuilder(column: $table.id, builder: (column) => column);
 
-  GeneratedColumn<String> get title =>
-      $composableBuilder(column: $table.title, builder: (column) => column);
+  GeneratedColumn<String> get title => $composableBuilder(column: $table.title, builder: (column) => column);
 
-  GeneratedColumn<bool> get done =>
-      $composableBuilder(column: $table.done, builder: (column) => column);
+  GeneratedColumn<bool> get done => $composableBuilder(column: $table.done, builder: (column) => column);
 
-  GeneratedColumn<int> get sortOrder =>
-      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+  GeneratedColumn<int> get sortOrder => $composableBuilder(column: $table.sortOrder, builder: (column) => column);
 
   $$TasksTableTableAnnotationComposer get taskId {
     final $$TasksTableTableAnnotationComposer composer = $composerBuilder(
@@ -4155,8 +4012,7 @@ class $$SubtasksTableTableAnnotationComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
@@ -4183,12 +4039,9 @@ class $$SubtasksTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$SubtasksTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$SubtasksTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$SubtasksTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () => $$SubtasksTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () => $$SubtasksTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () => $$SubtasksTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -4253,11 +4106,8 @@ class $$SubtasksTableTableTableManager
                       state = state.withJoin(
                         currentTable: table,
                         currentColumn: table.taskId,
-                        referencedTable: $$SubtasksTableTableReferences
-                            ._taskIdTable(db),
-                        referencedColumn: $$SubtasksTableTableReferences
-                            ._taskIdTable(db)
-                            .id,
+                        referencedTable: $$SubtasksTableTableReferences._taskIdTable(db),
+                        referencedColumn: $$SubtasksTableTableReferences._taskIdTable(db).id,
                       ) as T;
                     }
 
@@ -4286,35 +4136,31 @@ typedef $$SubtasksTableTableProcessedTableManager =
       SubtaskRow,
       PrefetchHooks Function({bool taskId})
     >;
-typedef $$RemindersTableTableCreateCompanionBuilder =
-    RemindersTableCompanion Function({
-      required String id,
-      required String taskId,
-      required int offsetMinutes,
-      required ReminderKind kind,
-      required int sortOrder,
-      Value<int> rowid,
-    });
-typedef $$RemindersTableTableUpdateCompanionBuilder =
-    RemindersTableCompanion Function({
-      Value<String> id,
-      Value<String> taskId,
-      Value<int> offsetMinutes,
-      Value<ReminderKind> kind,
-      Value<int> sortOrder,
-      Value<int> rowid,
-    });
+typedef $$RemindersTableTableCreateCompanionBuilder = RemindersTableCompanion Function({
+  required String id,
+  required String taskId,
+  required int offsetMinutes,
+  required ReminderKind kind,
+  required int sortOrder,
+  Value<int> rowid,
+});
+typedef $$RemindersTableTableUpdateCompanionBuilder = RemindersTableCompanion Function({
+  Value<String> id,
+  Value<String> taskId,
+  Value<int> offsetMinutes,
+  Value<ReminderKind> kind,
+  Value<int> sortOrder,
+  Value<int> rowid,
+});
 
-final class $$RemindersTableTableReferences
-    extends BaseReferences<_$KlarDb, $RemindersTableTable, ReminderRow> {
+final class $$RemindersTableTableReferences extends BaseReferences<_$KlarDb, $RemindersTableTable, ReminderRow> {
   $$RemindersTableTableReferences(
     super.$_db,
     super.$_table,
     super.$_typedResult,
   );
 
-  static $TasksTableTable _taskIdTable(_$KlarDb db) =>
-      db.tasksTable.createAlias('reminders__task_id__tasks__id');
+  static $TasksTableTable _taskIdTable(_$KlarDb db) => db.tasksTable.createAlias('reminders__task_id__tasks__id');
 
   $$TasksTableTableProcessedTableManager get taskId {
     final $_column = $_itemColumn<String>('task_id')!;
@@ -4331,8 +4177,7 @@ final class $$RemindersTableTableReferences
   }
 }
 
-class $$RemindersTableTableFilterComposer
-    extends Composer<_$KlarDb, $RemindersTableTable> {
+class $$RemindersTableTableFilterComposer extends Composer<_$KlarDb, $RemindersTableTable> {
   $$RemindersTableTableFilterComposer({
     required super.$db,
     required super.$table,
@@ -4350,11 +4195,10 @@ class $$RemindersTableTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnWithTypeConverterFilters<ReminderKind, ReminderKind, String> get kind =>
-      $composableBuilder(
-        column: $table.kind,
-        builder: (column) => ColumnWithTypeConverterFilters(column),
-      );
+  ColumnWithTypeConverterFilters<ReminderKind, ReminderKind, String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
 
   ColumnFilters<int> get sortOrder => $composableBuilder(
     column: $table.sortOrder,
@@ -4377,16 +4221,14 @@ class $$RemindersTableTableFilterComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
   }
 }
 
-class $$RemindersTableTableOrderingComposer
-    extends Composer<_$KlarDb, $RemindersTableTable> {
+class $$RemindersTableTableOrderingComposer extends Composer<_$KlarDb, $RemindersTableTable> {
   $$RemindersTableTableOrderingComposer({
     required super.$db,
     required super.$table,
@@ -4430,16 +4272,14 @@ class $$RemindersTableTableOrderingComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
   }
 }
 
-class $$RemindersTableTableAnnotationComposer
-    extends Composer<_$KlarDb, $RemindersTableTable> {
+class $$RemindersTableTableAnnotationComposer extends Composer<_$KlarDb, $RemindersTableTable> {
   $$RemindersTableTableAnnotationComposer({
     required super.$db,
     required super.$table,
@@ -4447,8 +4287,7 @@ class $$RemindersTableTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  GeneratedColumn<String> get id =>
-      $composableBuilder(column: $table.id, builder: (column) => column);
+  GeneratedColumn<String> get id => $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumn<int> get offsetMinutes => $composableBuilder(
     column: $table.offsetMinutes,
@@ -4458,8 +4297,7 @@ class $$RemindersTableTableAnnotationComposer
   GeneratedColumnWithTypeConverter<ReminderKind, String> get kind =>
       $composableBuilder(column: $table.kind, builder: (column) => column);
 
-  GeneratedColumn<int> get sortOrder =>
-      $composableBuilder(column: $table.sortOrder, builder: (column) => column);
+  GeneratedColumn<int> get sortOrder => $composableBuilder(column: $table.sortOrder, builder: (column) => column);
 
   $$TasksTableTableAnnotationComposer get taskId {
     final $$TasksTableTableAnnotationComposer composer = $composerBuilder(
@@ -4477,8 +4315,7 @@ class $$RemindersTableTableAnnotationComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
@@ -4505,12 +4342,9 @@ class $$RemindersTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$RemindersTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$RemindersTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$RemindersTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () => $$RemindersTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () => $$RemindersTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () => $$RemindersTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> id = const Value.absent(),
@@ -4575,11 +4409,8 @@ class $$RemindersTableTableTableManager
                       state = state.withJoin(
                         currentTable: table,
                         currentColumn: table.taskId,
-                        referencedTable: $$RemindersTableTableReferences
-                            ._taskIdTable(db),
-                        referencedColumn: $$RemindersTableTableReferences
-                            ._taskIdTable(db)
-                            .id,
+                        referencedTable: $$RemindersTableTableReferences._taskIdTable(db),
+                        referencedColumn: $$RemindersTableTableReferences._taskIdTable(db).id,
                       ) as T;
                     }
 
@@ -4608,31 +4439,27 @@ typedef $$RemindersTableTableProcessedTableManager =
       ReminderRow,
       PrefetchHooks Function({bool taskId})
     >;
-typedef $$CompletionsTableTableCreateCompanionBuilder =
-    CompletionsTableCompanion Function({
-      required String taskId,
-      required LocalDate occurrence,
-      required DateTime completedAt,
-      Value<int> rowid,
-    });
-typedef $$CompletionsTableTableUpdateCompanionBuilder =
-    CompletionsTableCompanion Function({
-      Value<String> taskId,
-      Value<LocalDate> occurrence,
-      Value<DateTime> completedAt,
-      Value<int> rowid,
-    });
+typedef $$CompletionsTableTableCreateCompanionBuilder = CompletionsTableCompanion Function({
+  required String taskId,
+  required LocalDate occurrence,
+  required DateTime completedAt,
+  Value<int> rowid,
+});
+typedef $$CompletionsTableTableUpdateCompanionBuilder = CompletionsTableCompanion Function({
+  Value<String> taskId,
+  Value<LocalDate> occurrence,
+  Value<DateTime> completedAt,
+  Value<int> rowid,
+});
 
-final class $$CompletionsTableTableReferences
-    extends BaseReferences<_$KlarDb, $CompletionsTableTable, CompletionRow> {
+final class $$CompletionsTableTableReferences extends BaseReferences<_$KlarDb, $CompletionsTableTable, CompletionRow> {
   $$CompletionsTableTableReferences(
     super.$_db,
     super.$_table,
     super.$_typedResult,
   );
 
-  static $TasksTableTable _taskIdTable(_$KlarDb db) =>
-      db.tasksTable.createAlias('completions__task_id__tasks__id');
+  static $TasksTableTable _taskIdTable(_$KlarDb db) => db.tasksTable.createAlias('completions__task_id__tasks__id');
 
   $$TasksTableTableProcessedTableManager get taskId {
     final $_column = $_itemColumn<String>('task_id')!;
@@ -4649,8 +4476,7 @@ final class $$CompletionsTableTableReferences
   }
 }
 
-class $$CompletionsTableTableFilterComposer
-    extends Composer<_$KlarDb, $CompletionsTableTable> {
+class $$CompletionsTableTableFilterComposer extends Composer<_$KlarDb, $CompletionsTableTable> {
   $$CompletionsTableTableFilterComposer({
     required super.$db,
     required super.$table,
@@ -4658,11 +4484,10 @@ class $$CompletionsTableTableFilterComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get occurrence =>
-      $composableBuilder(
-        column: $table.occurrence,
-        builder: (column) => ColumnWithTypeConverterFilters(column),
-      );
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get occurrence => $composableBuilder(
+    column: $table.occurrence,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
 
   ColumnFilters<DateTime> get completedAt => $composableBuilder(
     column: $table.completedAt,
@@ -4685,16 +4510,14 @@ class $$CompletionsTableTableFilterComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
   }
 }
 
-class $$CompletionsTableTableOrderingComposer
-    extends Composer<_$KlarDb, $CompletionsTableTable> {
+class $$CompletionsTableTableOrderingComposer extends Composer<_$KlarDb, $CompletionsTableTable> {
   $$CompletionsTableTableOrderingComposer({
     required super.$db,
     required super.$table,
@@ -4728,16 +4551,14 @@ class $$CompletionsTableTableOrderingComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
   }
 }
 
-class $$CompletionsTableTableAnnotationComposer
-    extends Composer<_$KlarDb, $CompletionsTableTable> {
+class $$CompletionsTableTableAnnotationComposer extends Composer<_$KlarDb, $CompletionsTableTable> {
   $$CompletionsTableTableAnnotationComposer({
     required super.$db,
     required super.$table,
@@ -4745,11 +4566,10 @@ class $$CompletionsTableTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  GeneratedColumnWithTypeConverter<LocalDate, String> get occurrence =>
-      $composableBuilder(
-        column: $table.occurrence,
-        builder: (column) => column,
-      );
+  GeneratedColumnWithTypeConverter<LocalDate, String> get occurrence => $composableBuilder(
+    column: $table.occurrence,
+    builder: (column) => column,
+  );
 
   GeneratedColumn<DateTime> get completedAt => $composableBuilder(
     column: $table.completedAt,
@@ -4772,8 +4592,7 @@ class $$CompletionsTableTableAnnotationComposer
             $table: $db.tasksTable,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
-            $removeJoinBuilderFromRootComposer:
-                $removeJoinBuilderFromRootComposer,
+            $removeJoinBuilderFromRootComposer: $removeJoinBuilderFromRootComposer,
           ),
     );
     return composer;
@@ -4800,12 +4619,9 @@ class $$CompletionsTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$CompletionsTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$CompletionsTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$CompletionsTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () => $$CompletionsTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () => $$CompletionsTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () => $$CompletionsTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<String> taskId = const Value.absent(),
@@ -4862,11 +4678,8 @@ class $$CompletionsTableTableTableManager
                       state = state.withJoin(
                         currentTable: table,
                         currentColumn: table.taskId,
-                        referencedTable: $$CompletionsTableTableReferences
-                            ._taskIdTable(db),
-                        referencedColumn: $$CompletionsTableTableReferences
-                            ._taskIdTable(db)
-                            .id,
+                        referencedTable: $$CompletionsTableTableReferences._taskIdTable(db),
+                        referencedColumn: $$CompletionsTableTableReferences._taskIdTable(db).id,
                       ) as T;
                     }
 
@@ -4895,35 +4708,32 @@ typedef $$CompletionsTableTableProcessedTableManager =
       CompletionRow,
       PrefetchHooks Function({bool taskId})
     >;
-typedef $$SettingsTableTableCreateCompanionBuilder =
-    SettingsTableCompanion Function({
-      Value<int> id,
-      required SoundRef sound,
-      Value<int?> minVolume,
-      required int rampSeconds,
-      required VibrationPattern vibration,
-      required int snoozeMinutes,
-      required int autoSilenceMinutes,
-      required int allDayMinutes,
-      required int firstWeekday,
-      required bool onboarded,
-    });
-typedef $$SettingsTableTableUpdateCompanionBuilder =
-    SettingsTableCompanion Function({
-      Value<int> id,
-      Value<SoundRef> sound,
-      Value<int?> minVolume,
-      Value<int> rampSeconds,
-      Value<VibrationPattern> vibration,
-      Value<int> snoozeMinutes,
-      Value<int> autoSilenceMinutes,
-      Value<int> allDayMinutes,
-      Value<int> firstWeekday,
-      Value<bool> onboarded,
-    });
+typedef $$SettingsTableTableCreateCompanionBuilder = SettingsTableCompanion Function({
+  Value<int> id,
+  required SoundRef sound,
+  Value<int?> minVolume,
+  required int rampSeconds,
+  required VibrationPattern vibration,
+  required int snoozeMinutes,
+  required int autoSilenceMinutes,
+  required int allDayMinutes,
+  Value<bool> pinNextTask,
+  required bool onboarded,
+});
+typedef $$SettingsTableTableUpdateCompanionBuilder = SettingsTableCompanion Function({
+  Value<int> id,
+  Value<SoundRef> sound,
+  Value<int?> minVolume,
+  Value<int> rampSeconds,
+  Value<VibrationPattern> vibration,
+  Value<int> snoozeMinutes,
+  Value<int> autoSilenceMinutes,
+  Value<int> allDayMinutes,
+  Value<bool> pinNextTask,
+  Value<bool> onboarded,
+});
 
-class $$SettingsTableTableFilterComposer
-    extends Composer<_$KlarDb, $SettingsTableTable> {
+class $$SettingsTableTableFilterComposer extends Composer<_$KlarDb, $SettingsTableTable> {
   $$SettingsTableTableFilterComposer({
     required super.$db,
     required super.$table,
@@ -4936,11 +4746,10 @@ class $$SettingsTableTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnWithTypeConverterFilters<SoundRef, SoundRef, String> get sound =>
-      $composableBuilder(
-        column: $table.sound,
-        builder: (column) => ColumnWithTypeConverterFilters(column),
-      );
+  ColumnWithTypeConverterFilters<SoundRef, SoundRef, String> get sound => $composableBuilder(
+    column: $table.sound,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
 
   ColumnFilters<int> get minVolume => $composableBuilder(
     column: $table.minVolume,
@@ -4952,8 +4761,7 @@ class $$SettingsTableTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnWithTypeConverterFilters<VibrationPattern, VibrationPattern, String>
-  get vibration => $composableBuilder(
+  ColumnWithTypeConverterFilters<VibrationPattern, VibrationPattern, String> get vibration => $composableBuilder(
     column: $table.vibration,
     builder: (column) => ColumnWithTypeConverterFilters(column),
   );
@@ -4973,8 +4781,8 @@ class $$SettingsTableTableFilterComposer
     builder: (column) => ColumnFilters(column),
   );
 
-  ColumnFilters<int> get firstWeekday => $composableBuilder(
-    column: $table.firstWeekday,
+  ColumnFilters<bool> get pinNextTask => $composableBuilder(
+    column: $table.pinNextTask,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -4984,8 +4792,7 @@ class $$SettingsTableTableFilterComposer
   );
 }
 
-class $$SettingsTableTableOrderingComposer
-    extends Composer<_$KlarDb, $SettingsTableTable> {
+class $$SettingsTableTableOrderingComposer extends Composer<_$KlarDb, $SettingsTableTable> {
   $$SettingsTableTableOrderingComposer({
     required super.$db,
     required super.$table,
@@ -5033,8 +4840,8 @@ class $$SettingsTableTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
-  ColumnOrderings<int> get firstWeekday => $composableBuilder(
-    column: $table.firstWeekday,
+  ColumnOrderings<bool> get pinNextTask => $composableBuilder(
+    column: $table.pinNextTask,
     builder: (column) => ColumnOrderings(column),
   );
 
@@ -5044,8 +4851,7 @@ class $$SettingsTableTableOrderingComposer
   );
 }
 
-class $$SettingsTableTableAnnotationComposer
-    extends Composer<_$KlarDb, $SettingsTableTable> {
+class $$SettingsTableTableAnnotationComposer extends Composer<_$KlarDb, $SettingsTableTable> {
   $$SettingsTableTableAnnotationComposer({
     required super.$db,
     required super.$table,
@@ -5053,14 +4859,12 @@ class $$SettingsTableTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
-  GeneratedColumn<int> get id =>
-      $composableBuilder(column: $table.id, builder: (column) => column);
+  GeneratedColumn<int> get id => $composableBuilder(column: $table.id, builder: (column) => column);
 
   GeneratedColumnWithTypeConverter<SoundRef, String> get sound =>
       $composableBuilder(column: $table.sound, builder: (column) => column);
 
-  GeneratedColumn<int> get minVolume =>
-      $composableBuilder(column: $table.minVolume, builder: (column) => column);
+  GeneratedColumn<int> get minVolume => $composableBuilder(column: $table.minVolume, builder: (column) => column);
 
   GeneratedColumn<int> get rampSeconds => $composableBuilder(
     column: $table.rampSeconds,
@@ -5085,13 +4889,12 @@ class $$SettingsTableTableAnnotationComposer
     builder: (column) => column,
   );
 
-  GeneratedColumn<int> get firstWeekday => $composableBuilder(
-    column: $table.firstWeekday,
+  GeneratedColumn<bool> get pinNextTask => $composableBuilder(
+    column: $table.pinNextTask,
     builder: (column) => column,
   );
 
-  GeneratedColumn<bool> get onboarded =>
-      $composableBuilder(column: $table.onboarded, builder: (column) => column);
+  GeneratedColumn<bool> get onboarded => $composableBuilder(column: $table.onboarded, builder: (column) => column);
 }
 
 class $$SettingsTableTableTableManager
@@ -5117,12 +4920,9 @@ class $$SettingsTableTableTableManager
         TableManagerState(
           db: db,
           table: table,
-          createFilteringComposer: () =>
-              $$SettingsTableTableFilterComposer($db: db, $table: table),
-          createOrderingComposer: () =>
-              $$SettingsTableTableOrderingComposer($db: db, $table: table),
-          createComputedFieldComposer: () =>
-              $$SettingsTableTableAnnotationComposer($db: db, $table: table),
+          createFilteringComposer: () => $$SettingsTableTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () => $$SettingsTableTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () => $$SettingsTableTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
@@ -5133,7 +4933,7 @@ class $$SettingsTableTableTableManager
                 Value<int> snoozeMinutes = const Value.absent(),
                 Value<int> autoSilenceMinutes = const Value.absent(),
                 Value<int> allDayMinutes = const Value.absent(),
-                Value<int> firstWeekday = const Value.absent(),
+                Value<bool> pinNextTask = const Value.absent(),
                 Value<bool> onboarded = const Value.absent(),
               }) => SettingsTableCompanion(
                 id: id,
@@ -5144,7 +4944,7 @@ class $$SettingsTableTableTableManager
                 snoozeMinutes: snoozeMinutes,
                 autoSilenceMinutes: autoSilenceMinutes,
                 allDayMinutes: allDayMinutes,
-                firstWeekday: firstWeekday,
+                pinNextTask: pinNextTask,
                 onboarded: onboarded,
               ),
           createCompanionCallback:
@@ -5157,7 +4957,7 @@ class $$SettingsTableTableTableManager
                 required int snoozeMinutes,
                 required int autoSilenceMinutes,
                 required int allDayMinutes,
-                required int firstWeekday,
+                Value<bool> pinNextTask = const Value.absent(),
                 required bool onboarded,
               }) => SettingsTableCompanion.insert(
                 id: id,
@@ -5168,7 +4968,7 @@ class $$SettingsTableTableTableManager
                 snoozeMinutes: snoozeMinutes,
                 autoSilenceMinutes: autoSilenceMinutes,
                 allDayMinutes: allDayMinutes,
-                firstWeekday: firstWeekday,
+                pinNextTask: pinNextTask,
                 onboarded: onboarded,
               ),
           withReferenceMapper: (p0) => p0
@@ -5206,16 +5006,11 @@ typedef $$SettingsTableTableProcessedTableManager =
 class $KlarDbManager {
   final _$KlarDb _db;
   $KlarDbManager(this._db);
-  $$TaskListsTableTableTableManager get taskListsTable =>
-      $$TaskListsTableTableTableManager(_db, _db.taskListsTable);
-  $$TasksTableTableTableManager get tasksTable =>
-      $$TasksTableTableTableManager(_db, _db.tasksTable);
-  $$SubtasksTableTableTableManager get subtasksTable =>
-      $$SubtasksTableTableTableManager(_db, _db.subtasksTable);
-  $$RemindersTableTableTableManager get remindersTable =>
-      $$RemindersTableTableTableManager(_db, _db.remindersTable);
+  $$TaskListsTableTableTableManager get taskListsTable => $$TaskListsTableTableTableManager(_db, _db.taskListsTable);
+  $$TasksTableTableTableManager get tasksTable => $$TasksTableTableTableManager(_db, _db.tasksTable);
+  $$SubtasksTableTableTableManager get subtasksTable => $$SubtasksTableTableTableManager(_db, _db.subtasksTable);
+  $$RemindersTableTableTableManager get remindersTable => $$RemindersTableTableTableManager(_db, _db.remindersTable);
   $$CompletionsTableTableTableManager get completionsTable =>
       $$CompletionsTableTableTableManager(_db, _db.completionsTable);
-  $$SettingsTableTableTableManager get settingsTable =>
-      $$SettingsTableTableTableManager(_db, _db.settingsTable);
+  $$SettingsTableTableTableManager get settingsTable => $$SettingsTableTableTableManager(_db, _db.settingsTable);
 }

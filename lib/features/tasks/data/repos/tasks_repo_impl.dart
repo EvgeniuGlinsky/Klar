@@ -118,20 +118,22 @@ class TasksRepoImpl implements TasksRepo {
     final dueDate = previous.dueDate;
     if (previous.isRecurring && dueDate != null && current != null && current.dueDate != dueDate) {
       // Undo of a recurring completion: forget every occurrence completed since the restored due date.
-      await (_db.delete(_db.completionsTable)
-            ..where((c) => c.taskId.equals(previous.id) & c.occurrence.isBiggerOrEqualValue(dueDate.iso)))
-          .go();
+      await (_db.delete(
+        _db.completionsTable,
+      )..where((c) => c.taskId.equals(previous.id) & c.occurrence.isBiggerOrEqualValue(dueDate.iso))).go();
     }
     await save(previous);
   });
 
   @override
-  Future<void> reopen(String id) =>
-      (_db.update(_db.tasksTable)..where((t) => t.id.equals(id))).write(const TasksTableCompanion(completedAt: Value(null)));
+  Future<void> reopen(String id) => (_db.update(
+    _db.tasksTable,
+  )..where((t) => t.id.equals(id))).write(const TasksTableCompanion(completedAt: Value(null)));
 
   @override
-  Future<void> setSubtaskDone(String subtaskId, {required bool done}) =>
-      (_db.update(_db.subtasksTable)..where((s) => s.id.equals(subtaskId))).write(SubtasksTableCompanion(done: Value(done)));
+  Future<void> setSubtaskDone(String subtaskId, {required bool done}) => (_db.update(
+    _db.subtasksTable,
+  )..where((s) => s.id.equals(subtaskId))).write(SubtasksTableCompanion(done: Value(done)));
 
   Task _toTask(TaskRow row, List<SubtaskRow> subtasks, List<ReminderRow> reminders) => Task(
     id: row.id,

@@ -8,6 +8,7 @@ import 'package:klar/ui/helpers/formatters.dart';
 import 'package:klar/ui/helpers/task_sorting.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
 import 'package:klar/ui/widgets/empty_state.dart';
 import 'package:klar/ui/widgets/page_header.dart';
@@ -15,7 +16,6 @@ import 'package:klar/ui/widgets/quick_add_bar.dart';
 import 'package:klar/ui/widgets/section_header.dart';
 import 'package:klar/ui/widgets/task_actions.dart';
 import 'package:klar/ui/widgets/task_tile.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class TodayPage extends StatefulWidget {
   const TodayPage({super.key});
@@ -38,8 +38,9 @@ class _TodayPageState extends State<TodayPage> {
         final dueToday = active.where((t) => t.dueDate == today);
         final scheduled = dueToday.where((t) => t.dueTime != null).toList()..sort(byDue);
         final anytime = dueToday.where((t) => t.dueTime == null).toList()..sort(byPriority);
-        final done = state.tasks.where((t) => t.completedAt != null && LocalDate.fromDateTime(t.completedAt!) == today).toList()
-          ..sort((a, b) => b.completedAt!.compareTo(a.completedAt!));
+        final done =
+            state.tasks.where((t) => t.completedAt != null && LocalDate.fromDateTime(t.completedAt!) == today).toList()
+              ..sort((a, b) => b.completedAt!.compareTo(a.completedAt!));
         final total = overdue.length + scheduled.length + anytime.length + done.length;
 
         Widget tiles(List<Task> tasks, {bool showDate = false}) => SliverList.list(
@@ -66,9 +67,14 @@ class _TodayPageState extends State<TodayPage> {
                   SliverToBoxAdapter(
                     child: PageHeader(title: l10n.today, subtitle: formatLongDate(today)),
                   ),
-                  if (total > 0) SliverToBoxAdapter(child: _Progress(done: done.length, total: total)),
+                  if (total > 0)
+                    SliverToBoxAdapter(
+                      child: _Progress(done: done.length, total: total),
+                    ),
                   if (state.loaded && total == 0)
-                    SliverToBoxAdapter(child: EmptyState(title: l10n.emptyTodayTitle, body: l10n.emptyTodayBody)),
+                    SliverToBoxAdapter(
+                      child: EmptyState(title: l10n.emptyTodayTitle, body: l10n.emptyTodayBody),
+                    ),
                   if (overdue.isNotEmpty) ...[
                     SliverToBoxAdapter(child: SectionHeader(l10n.sectionOverdue, color: KlarColors.lingon)),
                     tiles(overdue, showDate: true),
@@ -89,7 +95,7 @@ class _TodayPageState extends State<TodayPage> {
                         trailing: AnimatedRotation(
                           turns: _showDone ? 0.5 : 0,
                           duration: const Duration(milliseconds: 200),
-                          child: const Icon(PhosphorIconsLight.caretDown, size: 16, color: KlarColors.textFaint),
+                          child: const Icon(KlarIcons.caretDown, size: 16, color: KlarColors.textFaint),
                         ),
                       ),
                     ),

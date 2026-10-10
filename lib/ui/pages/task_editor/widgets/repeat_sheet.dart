@@ -6,11 +6,11 @@ import 'package:klar/ui/helpers/formatters.dart';
 import 'package:klar/ui/pages/task_editor/widgets/date_sheet.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
 import 'package:klar/ui/widgets/klar_choices.dart';
 import 'package:klar/ui/widgets/klar_row.dart';
 import 'package:klar/ui/widgets/klar_sheet.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 /// Result of the repeat sheet; `rule == null` turns repeating off.
 class RepeatChoice {
@@ -19,7 +19,11 @@ class RepeatChoice {
   final RecurrenceRule? rule;
 }
 
-Future<RepeatChoice?> showRepeatSheet(BuildContext context, {required LocalDate anchor, RecurrenceRule? current}) async {
+Future<RepeatChoice?> showRepeatSheet(
+  BuildContext context, {
+  required LocalDate anchor,
+  RecurrenceRule? current,
+}) async {
   final l10n = L10n.of(context);
   final weekday = weekdayNames()[anchor.weekday - 1];
   final presets = <(String, RecurrenceRule?)>[
@@ -36,7 +40,7 @@ Future<RepeatChoice?> showRepeatSheet(BuildContext context, {required LocalDate 
       RecurrenceRule(frequency: RecurrenceFrequency.yearly, anchor: anchor),
     ),
   ];
-  final isPreset = current == null || presets.any((p) => p.$2 == current?.anchoredAt(anchor));
+  final isPreset = current == null || presets.any((p) => p.$2 == current.anchoredAt(anchor));
 
   final choice = await showKlarSheet<Object>(
     context,
@@ -48,14 +52,14 @@ Future<RepeatChoice?> showRepeatSheet(BuildContext context, {required LocalDate 
             title: label,
             selected: isPreset && rule == current?.anchoredAt(anchor),
             trailing: isPreset && rule == current?.anchoredAt(anchor)
-                ? const Icon(PhosphorIconsLight.check, size: 18, color: KlarColors.birch)
+                ? const Icon(KlarIcons.check, size: 18, color: KlarColors.birch)
                 : null,
             onTap: () => Navigator.pop(context, RepeatChoice(rule)),
           ),
         KlarRow(
-          title: isPreset ? l10n.repeatCustom : formatRecurrence(l10n, current!),
+          title: isPreset ? l10n.repeatCustom : formatRecurrence(l10n, current),
           selected: !isPreset,
-          trailing: const Icon(PhosphorIconsLight.caretRight, size: 16, color: KlarColors.textFaint),
+          trailing: const Icon(KlarIcons.caretRight, size: 16, color: KlarColors.textFaint),
           onTap: () => Navigator.pop(context, 'custom'),
         ),
       ],
@@ -121,7 +125,7 @@ class _CustomRepeatState extends State<_CustomRepeat> {
             children: [
               IconButton(
                 onPressed: _rule.interval > 1 ? () => _set(_rule.copyWith(interval: _rule.interval - 1)) : null,
-                icon: const Icon(PhosphorIconsLight.minus, size: 18),
+                icon: const Icon(KlarIcons.minus, size: 18),
               ),
               SizedBox(
                 width: 32,
@@ -129,7 +133,7 @@ class _CustomRepeatState extends State<_CustomRepeat> {
               ),
               IconButton(
                 onPressed: _rule.interval < 99 ? () => _set(_rule.copyWith(interval: _rule.interval + 1)) : null,
-                icon: const Icon(PhosphorIconsLight.plus, size: 18),
+                icon: const Icon(KlarIcons.plus, size: 18),
               ),
             ],
           ),
@@ -166,7 +170,7 @@ class _CustomRepeatState extends State<_CustomRepeat> {
               ? null
               : IconButton(
                   onPressed: () => _set(_rule.copyWith(until: () => null)),
-                  icon: const Icon(PhosphorIconsLight.x, size: 16),
+                  icon: const Icon(KlarIcons.x, size: 16),
                 ),
           onTap: () async {
             final until = await pickDate(

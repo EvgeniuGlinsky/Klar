@@ -21,20 +21,22 @@ class _KlarAppState extends State<KlarApp> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp.router(
-    onGenerateTitle: (context) => L10n.of(context).appTitle,
-    debugShowCheckedModeBanner: false,
-    theme: KlarTheme.dark,
-    darkTheme: KlarTheme.dark,
-    themeMode: ThemeMode.dark,
-    locale: const Locale('ru'),
-    supportedLocales: L10n.supportedLocales,
-    localizationsDelegates: const [
-      L10n.delegate,
-      GlobalMaterialLocalizations.delegate,
-      GlobalWidgetsLocalizations.delegate,
-      GlobalCupertinoLocalizations.delegate,
-    ],
-    routerConfig: _router,
+  Widget build(BuildContext context) => OverviewScope(
+    child: MaterialApp.router(
+      onGenerateTitle: (context) => L10n.of(context).appTitle,
+      debugShowCheckedModeBanner: false,
+      theme: KlarTheme.dark,
+      darkTheme: KlarTheme.dark,
+      themeMode: ThemeMode.dark,
+      locale: const Locale('ru'),
+      supportedLocales: L10n.supportedLocales,
+      localizationsDelegates: const [
+        L10n.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      routerConfig: _router,
+    ),
   );
 }

@@ -19,18 +19,13 @@ import 'package:rxdart/rxdart.dart';
 /// arrive during a run trigger exactly one more run.
 class AlarmSyncService {
   AlarmSyncService({
-    required TasksRepo tasksRepo,
-    required ListsRepo listsRepo,
-    required SettingsRepo settingsRepo,
-    required AlarmEngine engine,
-    required AlarmPlanner planner,
-    required Clock clock,
-  }) : _tasksRepo = tasksRepo,
-       _listsRepo = listsRepo,
-       _settingsRepo = settingsRepo,
-       _engine = engine,
-       _planner = planner,
-       _clock = clock;
+    required this._tasksRepo,
+    required this._listsRepo,
+    required this._settingsRepo,
+    required this._engine,
+    required this._planner,
+    required this._clock,
+  });
 
   static const _debounce = Duration(milliseconds: 300);
 
@@ -109,6 +104,7 @@ class AlarmSyncService {
     await _engine.replaceAll(
       config: EngineConfig.fromSettings(settings, horizonEnd: plan.horizonEnd.toDateTime()),
       specs: plan.specs,
+      upcoming: plan.upcoming,
       liveTasks: plan.liveTasks,
       ackSeq: ackSeq,
     );

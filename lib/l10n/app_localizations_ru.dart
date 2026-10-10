@@ -505,16 +505,13 @@ class L10nRu extends L10n {
   String get settingAllDayTime => 'Задачи без времени напоминают в';
 
   @override
-  String get settingFirstWeekday => 'Неделя начинается';
-
-  @override
-  String get weekStartsMonday => 'С понедельника';
-
-  @override
-  String get weekStartsSunday => 'С воскресенья';
-
-  @override
   String get sectionNotifications => 'Уведомления';
+
+  @override
+  String get settingPinNext => 'Ближайшая задача в шторке';
+
+  @override
+  String get settingPinNextHint => 'Постоянное уведомление с отсчётом до следующей задачи';
 
   @override
   String get settingNotificationSound => 'Звук уведомлений';

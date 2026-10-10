@@ -15,6 +15,9 @@ linter:
   rules:
     document_ignores: false
     sort_pub_dependencies: false
+    use_primary_constructors: false
+    unnecessary_type_name_in_constructor: false
+    avoid_classes_with_only_static_members: false
 
 formatter:
   page_width: 120

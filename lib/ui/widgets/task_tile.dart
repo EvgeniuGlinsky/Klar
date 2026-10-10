@@ -6,9 +6,9 @@ import 'package:klar/l10n/app_localizations.dart';
 import 'package:klar/ui/helpers/formatters.dart';
 import 'package:klar/ui/theme/klar_colors.dart';
 import 'package:klar/ui/theme/klar_dimens.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 import 'package:klar/ui/theme/klar_typography.dart';
 import 'package:klar/ui/widgets/check_circle.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class TaskTile extends StatelessWidget {
   const TaskTile({
@@ -40,12 +40,12 @@ class TaskTile extends StatelessWidget {
       key: ValueKey('task-${task.id}'),
       background: const _SwipeBackground(
         color: KlarColors.sage,
-        icon: PhosphorIconsLight.check,
+        icon: KlarIcons.check,
         alignment: Alignment.centerLeft,
       ),
       secondaryBackground: const _SwipeBackground(
         color: KlarColors.lingon,
-        icon: PhosphorIconsLight.trash,
+        icon: KlarIcons.trash,
         alignment: Alignment.centerRight,
       ),
       confirmDismiss: (direction) async {
@@ -119,7 +119,7 @@ class _Meta extends StatelessWidget {
     final items = <Widget>[
       if (dueDate != null && (showDate || overdue || time != null))
         _MetaItem(
-          icon: task.hasAlarm ? PhosphorIconsLight.alarm : (time != null ? PhosphorIconsLight.clock : null),
+          icon: task.hasAlarm ? KlarIcons.alarm : (time != null ? KlarIcons.clock : null),
           text: [
             if (showDate || overdue || dueDate != now.date) formatDate(l10n, dueDate, now.date),
             if (time != null) formatTime(time),
@@ -127,15 +127,15 @@ class _Meta extends StatelessWidget {
           color: color,
         )
       else if (task.reminders.isNotEmpty)
-        _MetaItem(icon: task.hasAlarm ? PhosphorIconsLight.alarm : PhosphorIconsLight.bell, color: color),
-      if (task.isRecurring) _MetaItem(icon: PhosphorIconsLight.repeat, color: KlarColors.textMuted),
+        _MetaItem(icon: task.hasAlarm ? KlarIcons.alarm : KlarIcons.bell, color: color),
+      if (task.isRecurring) const _MetaItem(icon: KlarIcons.repeat, color: KlarColors.textMuted),
       if (task.subtasks.isNotEmpty)
         _MetaItem(
-          icon: PhosphorIconsLight.listChecks,
+          icon: KlarIcons.listChecks,
           text: '${task.subtasksDone}/${task.subtasks.length}',
           color: KlarColors.textMuted,
         ),
-      if (task.notes.isNotEmpty) const _MetaItem(icon: PhosphorIconsLight.textAlignLeft, color: KlarColors.textMuted),
+      if (task.notes.isNotEmpty) const _MetaItem(icon: KlarIcons.textAlignLeft, color: KlarColors.textMuted),
       if (list != null && !list!.isInbox) _ListMark(list: list!),
     ];
     if (items.isEmpty) return const SizedBox.shrink();

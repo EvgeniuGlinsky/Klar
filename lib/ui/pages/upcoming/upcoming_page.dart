@@ -26,7 +26,8 @@ class UpcomingPage extends StatelessWidget {
       builder: (context, state) {
         final today = state.today;
         final lastDay = today.addDays(_days);
-        final upcoming = state.active.where((t) => t.dueDate != null && t.dueDate!.isAfter(today)).toList()..sort(byDue);
+        final upcoming = state.active.where((t) => t.dueDate != null && t.dueDate!.isAfter(today)).toList()
+          ..sort(byDue);
         final byDay = groupBy(upcoming.where((t) => !t.dueDate!.isAfter(lastDay)), (Task t) => t.dueDate!);
         final later = upcoming.where((t) => t.dueDate!.isAfter(lastDay)).toList();
         final tomorrow = today.addDays(1);
@@ -49,7 +50,8 @@ class UpcomingPage extends StatelessWidget {
           ),
         ];
 
-        String dayTitle(LocalDate date) => date == tomorrow ? '${l10n.tomorrow} · ${formatLongDate(date)}' : formatLongDate(date);
+        String dayTitle(LocalDate date) =>
+            date == tomorrow ? '${l10n.tomorrow} · ${formatLongDate(date)}' : formatLongDate(date);
 
         return Stack(
           children: [
@@ -59,7 +61,9 @@ class UpcomingPage extends StatelessWidget {
                 slivers: [
                   SliverToBoxAdapter(child: PageHeader(title: l10n.navUpcoming)),
                   if (state.loaded && upcoming.isEmpty)
-                    SliverToBoxAdapter(child: EmptyState(title: l10n.emptyUpcomingTitle, body: l10n.emptyUpcomingBody)),
+                    SliverToBoxAdapter(
+                      child: EmptyState(title: l10n.emptyUpcomingTitle, body: l10n.emptyUpcomingBody),
+                    ),
                   for (final entry in byDay.entries) ...section(dayTitle(entry.key), entry.value),
                   if (later.isNotEmpty) ...section(l10n.later, later, showDate: true),
                   const SliverToBoxAdapter(child: SizedBox(height: 120)),

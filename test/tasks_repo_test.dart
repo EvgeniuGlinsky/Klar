@@ -85,7 +85,13 @@ void main() {
     await db
         .into(db.taskListsTable)
         .insert(
-          TaskListsTableCompanion.insert(id: 'work', name: 'Работа', colorKey: 'sage', iconKey: 'briefcase', createdAt: clock.now()),
+          TaskListsTableCompanion.insert(
+            id: 'work',
+            name: 'Работа',
+            colorKey: 'sage',
+            iconKey: 'briefcase',
+            createdAt: clock.now(),
+          ),
         );
     await repo.save(daily().copyWith(listId: 'work'));
     await (db.delete(db.taskListsTable)..where((l) => l.id.equals('work'))).go();

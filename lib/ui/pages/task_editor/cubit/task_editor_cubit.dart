@@ -52,14 +52,11 @@ class TaskEditorState extends Equatable {
 
 class TaskEditorCubit extends Cubit<TaskEditorState> {
   TaskEditorCubit({
-    required TasksRepo tasksRepo,
-    required ListsRepo listsRepo,
+    required this._tasksRepo,
+    required this._listsRepo,
     required SettingsRepo settingsRepo,
-    required Clock clock,
-  }) : _tasksRepo = tasksRepo,
-       _listsRepo = listsRepo,
-       _clock = clock,
-       super(TaskEditorState(settings: settingsRepo.current));
+    required this._clock,
+  }) : super(TaskEditorState(settings: settingsRepo.current));
 
   static const _uuid = Uuid();
 
@@ -102,7 +99,10 @@ class TaskEditorCubit extends Cubit<TaskEditorState> {
     RecurrenceRule? reanchored;
     if (rule != null) {
       final followsDay =
-          rule.frequency == RecurrenceFrequency.weekly && previous != null && rule.weekdays.length == 1 && rule.weekdays.first == previous.weekday;
+          rule.frequency == RecurrenceFrequency.weekly &&
+          previous != null &&
+          rule.weekdays.length == 1 &&
+          rule.weekdays.first == previous.weekday;
       reanchored = rule.anchoredAt(date).copyWith(weekdays: followsDay ? {date.weekday} : null);
     }
     return t.copyWith(dueDate: () => date, recurrence: () => reanchored);
@@ -114,7 +114,7 @@ class TaskEditorCubit extends Cubit<TaskEditorState> {
     return t.copyWith(
       dueDate: () => t.dueDate ?? _clock.today(),
       dueTime: () => minutes,
-      reminders: addAlarm ? [Reminder(id: _uuid.v4(), offsetMinutes: 0, kind: ReminderKind.alarm)] : null,
+      reminders: addAlarm ? [Reminder(id: _uuid.v4(), offsetMinutes: 0, kind: ReminderKind.alarm)] : t.reminders,
     );
   });
 
@@ -135,7 +135,7 @@ class TaskEditorCubit extends Cubit<TaskEditorState> {
 
   void updateReminder(Reminder reminder) => _update(
     (t) => t.copyWith(
-      reminders: [for (final r in t.reminders) r.id == reminder.id ? reminder : r]
+      reminders: t.reminders.map((r) => r.id == reminder.id ? reminder : r).toList()
         ..sort((a, b) => b.offsetMinutes.compareTo(a.offsetMinutes)),
     ),
   );
@@ -146,18 +146,25 @@ class TaskEditorCubit extends Cubit<TaskEditorState> {
   void addSubtask(String title) {
     final trimmed = title.trim();
     if (trimmed.isEmpty) return;
-    _update((t) => t.copyWith(subtasks: [...t.subtasks, Subtask(id: _uuid.v4(), title: trimmed)]));
+    _update(
+      (t) => t.copyWith(
+        subtasks: [
+          ...t.subtasks,
+          Subtask(id: _uuid.v4(), title: trimmed),
+        ],
+      ),
+    );
   }
 
   void updateSubtask(Subtask subtask) =>
-      _update((t) => t.copyWith(subtasks: [for (final s in t.subtasks) s.id == subtask.id ? subtask : s]));
+      _update((t) => t.copyWith(subtasks: t.subtasks.map((s) => s.id == subtask.id ? subtask : s).toList()));
 
   void removeSubtask(String id) => _update((t) => t.copyWith(subtasks: t.subtasks.where((s) => s.id != id).toList()));
 
+  /// [newIndex] is the position after [oldIndex] was removed.
   void reorderSubtasks(int oldIndex, int newIndex) => _update((t) {
     final subtasks = [...t.subtasks];
-    final item = subtasks.removeAt(oldIndex);
-    subtasks.insert(newIndex > oldIndex ? newIndex - 1 : newIndex, item);
+    subtasks.insert(newIndex, subtasks.removeAt(oldIndex));
     return t.copyWith(subtasks: subtasks);
   });
 
@@ -172,7 +179,7 @@ class TaskEditorCubit extends Cubit<TaskEditorState> {
       task.copyWith(
         title: task.title.trim(),
         notes: task.notes.trim(),
-        reminders: task.dueDate == null ? const [] : null,
+        reminders: task.dueDate == null ? const [] : task.reminders,
       ),
     );
     emit(state.copyWith(status: EditorStatus.closed));

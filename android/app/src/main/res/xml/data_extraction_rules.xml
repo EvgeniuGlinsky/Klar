@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The alarm engine state is rebuilt by Flutter on first launch; never restore it onto another device. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="device_file" path="." />
+        <exclude domain="device_sharedpref" path="." />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="device_file" path="." />
+        <exclude domain="device_sharedpref" path="." />
+    </device-transfer>
+</data-extraction-rules>

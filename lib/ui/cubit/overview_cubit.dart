@@ -124,6 +124,6 @@ class OverviewCubit extends Cubit<OverviewState> {
   Future<void> close() async {
     _ticker.cancel();
     await _subscription.cancel();
-    return super.close();
+    await super.close();
   }
 }

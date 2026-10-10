@@ -1,26 +1,26 @@
 import 'package:flutter/widgets.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:klar/ui/theme/klar_icons.dart';
 
 /// Icons a list can have, by key, in picker order.
 abstract final class ListIcons {
   static const all = <String, IconData>{
-    'tray': PhosphorIconsLight.tray,
-    'briefcase': PhosphorIconsLight.briefcase,
-    'house': PhosphorIconsLight.house,
-    'heart': PhosphorIconsLight.heart,
-    'cart': PhosphorIconsLight.shoppingCart,
-    'book': PhosphorIconsLight.book,
-    'leaf': PhosphorIconsLight.leaf,
-    'barbell': PhosphorIconsLight.barbell,
-    'coffee': PhosphorIconsLight.coffee,
-    'airplane': PhosphorIconsLight.airplane,
-    'paw': PhosphorIconsLight.pawPrint,
-    'cap': PhosphorIconsLight.graduationCap,
-    'mountains': PhosphorIconsLight.mountains,
-    'snowflake': PhosphorIconsLight.snowflake,
-    'moon': PhosphorIconsLight.moon,
-    'plant': PhosphorIconsLight.plant,
+    'tray': KlarIcons.tray,
+    'briefcase': KlarIcons.briefcase,
+    'house': KlarIcons.house,
+    'heart': KlarIcons.heart,
+    'cart': KlarIcons.shoppingCart,
+    'book': KlarIcons.book,
+    'leaf': KlarIcons.leaf,
+    'barbell': KlarIcons.barbell,
+    'coffee': KlarIcons.coffee,
+    'airplane': KlarIcons.airplane,
+    'paw': KlarIcons.pawPrint,
+    'cap': KlarIcons.graduationCap,
+    'mountains': KlarIcons.mountains,
+    'snowflake': KlarIcons.snowflake,
+    'moon': KlarIcons.moon,
+    'plant': KlarIcons.plant,
   };
 
-  static IconData of(String key) => all[key] ?? PhosphorIconsLight.listBullets;
+  static IconData of(String key) => all[key] ?? KlarIcons.listBullets;
 }

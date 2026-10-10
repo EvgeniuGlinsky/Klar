@@ -47,7 +47,7 @@ class SettingsRepoImpl implements SettingsRepo {
           snoozeMinutes: s.snoozeMinutes,
           autoSilenceMinutes: s.autoSilenceMinutes,
           allDayMinutes: s.allDayMinutes,
-          firstWeekday: s.firstWeekday,
+          pinNextTask: Value(s.pinNextTask),
           onboarded: s.onboarded,
         ),
       );
@@ -60,7 +60,7 @@ class SettingsRepoImpl implements SettingsRepo {
     snoozeMinutes: row.snoozeMinutes,
     autoSilenceMinutes: row.autoSilenceMinutes,
     allDayMinutes: row.allDayMinutes,
-    firstWeekday: row.firstWeekday,
+    pinNextTask: row.pinNextTask,
     onboarded: row.onboarded,
   );
 }

@@ -38,7 +38,10 @@ class RecurrenceRule extends Equatable {
   final LocalDate? until;
 
   bool get isWorkdays =>
-      frequency == RecurrenceFrequency.weekly && interval == 1 && weekdays.length == 5 && weekdays.containsAll(weekdaysOnly);
+      frequency == RecurrenceFrequency.weekly &&
+      interval == 1 &&
+      weekdays.length == 5 &&
+      weekdays.containsAll(weekdaysOnly);
 
   /// The first occurrence on or after [date], or `null` if the rule has ended.
   LocalDate? firstOnOrAfter(LocalDate date) {

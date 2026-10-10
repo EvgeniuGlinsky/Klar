@@ -3,6 +3,7 @@ import 'package:klar/features/alarms/domain/models/done_event.dart';
 import 'package:klar/features/alarms/domain/models/engine_config.dart';
 import 'package:klar/features/alarms/domain/models/permission_report.dart';
 import 'package:klar/features/alarms/domain/models/sound_ref.dart';
+import 'package:klar/features/alarms/domain/models/upcoming_task.dart';
 import 'package:klar/features/alarms/domain/models/vibration_pattern.dart';
 
 enum SettingsTarget { notifications, exactAlarms, fullScreen, battery, reminderChannel, app }
@@ -23,9 +24,11 @@ abstract interface class AlarmEngine {
   ///
   /// [liveTasks] maps every not completed task to its current due date: snoozes of other tasks or of
   /// older occurrences are dropped and ringing for them stops. Events up to [ackSeq] are deleted.
+  /// [upcoming] feeds the pinned "next task" notification.
   Future<void> replaceAll({
     required EngineConfig config,
     required List<AlarmSpec> specs,
+    required List<UpcomingTask> upcoming,
     required Map<String, String> liveTasks,
     required int ackSeq,
   });

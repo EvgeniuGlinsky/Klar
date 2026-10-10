@@ -101,7 +101,7 @@ class SettingsTable extends Table {
   IntColumn get snoozeMinutes => integer()();
   IntColumn get autoSilenceMinutes => integer()();
   IntColumn get allDayMinutes => integer()();
-  IntColumn get firstWeekday => integer()();
+  BoolColumn get pinNextTask => boolean().withDefault(const Constant(true))();
   BoolColumn get onboarded => boolean()();
 
   @override

@@ -161,10 +161,9 @@
   "testAlarmScheduled": "Прозвенит через 10 секунд — можно заблокировать экран",
   "sectionTasks": "Задачи",
   "settingAllDayTime": "Задачи без времени напоминают в",
-  "settingFirstWeekday": "Неделя начинается",
-  "weekStartsMonday": "С понедельника",
-  "weekStartsSunday": "С воскресенья",
   "sectionNotifications": "Уведомления",
+  "settingPinNext": "Ближайшая задача в шторке",
+  "settingPinNextHint": "Постоянное уведомление с отсчётом до следующей задачи",
   "settingNotificationSound": "Звук уведомлений",
   "settingNotificationSoundHint": "Настраивается в системе",
 

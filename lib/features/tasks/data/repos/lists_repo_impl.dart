@@ -8,8 +8,9 @@ class ListsRepoImpl implements ListsRepo {
 
   final KlarDb _db;
 
-  SimpleSelectStatement<$TaskListsTableTable, TaskListRow> get _query => _db.select(_db.taskListsTable)
-    ..orderBy([(l) => OrderingTerm.asc(l.sortOrder), (l) => OrderingTerm.asc(l.createdAt)]);
+  SimpleSelectStatement<$TaskListsTableTable, TaskListRow> get _query =>
+      _db.select(_db.taskListsTable)
+        ..orderBy([(l) => OrderingTerm.asc(l.sortOrder), (l) => OrderingTerm.asc(l.createdAt)]);
 
   @override
   Stream<List<TaskList>> watchAll() => _query.watch().map((rows) => rows.map(_toList).toList());
