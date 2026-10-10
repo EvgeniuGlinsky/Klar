@@ -12,6 +12,8 @@ Future<T?> showKlarSheet<T>(
   context: context,
   isScrollControlled: true,
   useSafeArea: true,
+  // Above the tab bar, not inside the tab's navigator.
+  useRootNavigator: true,
   builder: (context) => Padding(
     padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
     child: ConstrainedBox(

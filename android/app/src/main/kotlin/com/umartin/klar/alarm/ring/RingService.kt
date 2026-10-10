@@ -151,7 +151,8 @@ class RingService : Service() {
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setOngoing(true)
             .setOnlyAlertOnce(true)
-            .setSilent(true)
+            // No setSilent(): it turns the notification into a group child that never alerts, which
+            // suppresses the full-screen intent. The channel itself has no sound or vibration.
             .setFullScreenIntent(fullScreen, true)
             .setContentIntent(fullScreen)
             .setDeleteIntent(Notifier.action(this, ActionReceiver.ACTION_DISMISS, spec))

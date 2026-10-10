@@ -57,7 +57,8 @@ class KlarRow extends StatelessWidget {
                 ),
               ),
               if (value != null)
-                Flexible(
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width * 0.42),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12),
                     child: Text(
